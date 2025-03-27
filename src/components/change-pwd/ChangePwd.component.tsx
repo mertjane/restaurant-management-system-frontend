@@ -5,7 +5,6 @@ import { useLocation } from "react-router-dom";
 
 import { AuthContext } from "../../context/AuthContext";
 import axios, { AxiosError } from "axios";
-import { API_BASE_URL } from "../../api/auth";
 import { Success } from "../animations/Animation";
 import { PwdHideIcon, PwdShowIcon } from "../icons/Icons";
 
@@ -49,7 +48,7 @@ const ChangePwd: React.FC<ChangePwdProps> = ({ setForm, form }) => {
       }
 
       try {
-        const response = await axios.get(`${API_BASE_URL}/reset-password`, {
+        const response = await axios.get(`${import.meta.env.VITE_API_URL}/reset-password`, {
           params: { token: queryToken },
         });
         if (response.data.success) {
