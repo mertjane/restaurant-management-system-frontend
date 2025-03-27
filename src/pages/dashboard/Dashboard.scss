@@ -1,0 +1,41 @@
+.dashboard-container {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(100px, 1fr));
+    grid-template-rows: repeat(auto-fit, minmax(70px, auto));
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    height: 100vh;
+    background-color: #fafafa;
+}
+
+.sidebar {
+    grid-area: 1 / 1 / 9 / 1;
+    border-right: 1px solid #e5e5e5;
+    transition: transform 0.3s ease-in-out;
+    background: #fff;
+    height: 100vh;
+    &.open {
+        transform: translateX(0);
+    }
+
+    &.closed {
+        transform: translateX(-100%);
+    }
+}
+.dashboard-main {
+    grid-area: 2 / 2 / 13 / 7;
+    transition: margin-left 0.3s ease-in-out;
+    background-color: #eceff1;
+    overflow-y: scroll;
+    height: 100%;
+    article {
+       height: 100%; 
+    }
+    &.open {
+        margin-left: 0;
+    }
+
+    &.closed {
+        margin-left: -250px;
+    }
+}

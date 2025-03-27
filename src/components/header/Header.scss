@@ -1,0 +1,67 @@
+.auth-header {
+    height: 80px;
+    background-color: #222;
+    padding: 14px 2rem;
+    display: flex;
+    align-items: center;
+    h3 {
+        font-weight: 100;
+        color: #ffff;
+    }
+}
+
+.dashboard-header {
+    max-height: 70px;
+    border-bottom: 1px solid #e5e5e5;
+    grid-area: 1 / 2 / 2 / 8;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2em;
+    position: relative;
+    transition: margin-left 0.3s ease-in-out; 
+    background-color: #fff;
+    &.open {
+        margin-left: 0;
+    }
+
+    &.closed {
+        margin-left: -250px;
+    }
+    .toggle-btn {
+        width: 37px;
+        height: 37px;
+        cursor: pointer;
+        svg {
+            transition: 0.3s;
+        }
+
+        &:hover > svg {
+            transform: scale(1.1);
+            transition: 0.3s;
+        }
+    }
+    .control-unit {
+        ul {
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 1.5em;
+            li{
+                width: 37px;
+                height: 37px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 50%;
+                padding: 5px;
+                transition: .3s;
+                cursor: pointer;
+                &:hover{
+                    background-color: #f2efea;
+                    transition: .3s;
+                }
+            }
+        }
+    }
+}

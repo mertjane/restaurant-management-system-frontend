@@ -1,0 +1,71 @@
+/* Custom Checkbox Styles */
+.checkbox-wrapper {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 8px 0;
+    cursor: pointer;
+}
+
+.checkbox-wrapper input[type="checkbox"] {
+    display: none; /* Hide default checkbox */
+}
+
+.checkbox-wrapper #remember-label {
+    position: relative;
+    padding-left: 28px;
+    cursor: pointer;
+    user-select: none;
+    background-color: transparent;
+    font-size: 15px;
+    top: 4px;
+    left: 0;
+}
+
+/* Custom checkbox square */
+.checkbox-wrapper label:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 6px;
+    width: 14px;
+    height: 14px;
+    border: 2px solid #888; /* Border color */
+    border-radius: 3px;
+    background: white;
+}
+
+/* Checkmark when checked */
+.checkbox-wrapper input[type="checkbox"]:checked + label:before {
+    background: #007C89; /* Checkmark background color */
+    border-color: #007C89;
+}
+
+/* Create the checkmark symbol */
+.checkbox-wrapper input[type="checkbox"]:checked + label:after {
+    content: "";
+    position: absolute;
+    left: 6.5px;
+    top: 8.5px;
+    width: 3px;
+    height: 8px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+#reset-pwd {
+    color: #333;
+    font-size: 15px;
+    text-decoration: none;
+    position: absolute;
+    right: 0;
+    top: 16px;
+    font-weight: 500;
+}
+
+#reset-pwd:hover {
+    text-decoration: underline;
+}

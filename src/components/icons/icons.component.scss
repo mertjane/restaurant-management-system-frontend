@@ -1,0 +1,39 @@
+.icon-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 5px;
+}
+
+.input-icon {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    right: 10px;
+    top: 43%;
+    transform: translateY(-50%);
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    svg {
+        transition: .3s;
+    }
+    &:hover > svg path {
+        stroke: #043c42;
+    }
+}
+
+.email-icon-wrapper{
+    margin: 0 auto;
+}
+
+.sort-icon {
+    position: absolute;
+    z-index: 998;
+    right: 10px;
+    cursor: pointer;
+  
+    &:hover path {
+      fill: #888;
+    }
+  }
