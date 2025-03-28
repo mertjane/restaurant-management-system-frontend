@@ -1,0 +1,31 @@
+.item-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    ul {
+        list-style: none;
+        display: flex;
+        align-items: center;
+        gap: 2.5em;
+        padding: 4px;
+        font-size: 14px;
+        li {
+            border: var(--border);
+            padding: 6px 24px;
+            border-radius: 34px;
+            font-weight: 500;
+            cursor: pointer;
+            color: var(--secondary-text-color);
+            &:hover {
+                background-color: var(--secondary-bg);
+                border-color: var(--secondary-bg);
+            }
+
+            &.active{
+                background-color: #006239;
+                color: #fff;
+                border-color: #006239;
+            }
+        }
+    }
+}

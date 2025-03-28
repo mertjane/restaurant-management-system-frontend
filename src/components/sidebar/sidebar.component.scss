@@ -1,19 +1,21 @@
+
+
 .sidebar-container {
-    background: #fff;
+    height: 100%;
     .sidebar-header {
         min-height: 70px;
         max-height: 70px;
         display: flex;
         align-items: center;
         justify-content: center;
-        border-bottom: 1px solid #e5e5e5;
+        border-bottom: var(--border);
+        font-family: var(--font-sidebar-header);
         h3 {
-            font-size: 1.5em;
+            font-size: 2em;
         }
     }
 
     nav {
-        height: 100%;
         ul {
             display: flex;
             flex-direction: column;
@@ -28,15 +30,21 @@
                 transition: 0.3s;
                 gap: 8px;
                 padding: 12px 22px;
+                color: var(--text-color);
                 cursor: pointer;
                 &:hover {
-                    background-color: #f2efea;
+                    background-color: var(--secondary-bg);
                     transition: 0.3s;
                 }
 
                 &.active {
-                    background: #ECEFF1; // Change to your preferred highlight color
-                    
+                    background: var(--focus-bg); // Change to your preferred highlight color
+
+                    .sidebar-link {
+                        span{
+                            color: var(--text-color);
+                        }
+                    }
                 }
 
                 .sidebar-link {
@@ -46,10 +54,12 @@
                     text-decoration: none;
                     color: inherit;
                     width: 100%;
-                    /* padding: 12px 22px; */
+                    span{
+                        color: var(--secondary-text-color);
+                    }
                 }
                 a {
-                    color: #333;
+                    color: var(--secondary-text-color);
                     font-weight: 500;
                     &:hover {
                         text-decoration: none;

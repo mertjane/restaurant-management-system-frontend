@@ -76,7 +76,8 @@ export interface Bookings {
     status: string;
     customer: {
         name: string;
-        email: string
+        email: string;
+        phone: string;
     }
 
 }
@@ -85,3 +86,5 @@ export interface BookingsResponse {
     content: Bookings[];
     totalPages: number;
 }
+
+

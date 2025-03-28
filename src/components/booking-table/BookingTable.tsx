@@ -1,22 +1,62 @@
-import React, { useContext, useEffect } from "react";
+import { useContext, useState } from "react";
 import { BookingContext } from "../../context/BookingContext";
 import "./booking-table.component.scss";
-import { SortIcon } from "../icons/Icons";
+import {
+  CancelledIcon,
+  EditIcon,
+  PendingIcon,
+  SortIcon,
+  SuccessIcon,
+} from "../icons/Icons";
+import { BookingModal } from "../modals/Modal";
 
 const BookingTable = () => {
   const bookingContext = useContext(BookingContext);
+  const [sortByTime, setSortByTime] = useState<string>("desc");
+  const [sortByDate, setSortByDate] = useState<string>("desc");
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
-  useEffect(() => {
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
+
+  const handleSortByTime = () => {
+    // Toggle sort order
+    const newSortOrder = sortByTime === "asc" ? "desc" : "asc";
+    setSortByTime(newSortOrder);
+
     if (bookingContext) {
-      bookingContext.fetchBookings(1); // Fetch bookings on mount
+      bookingContext.sortBookingsByTime(newSortOrder); // Sort bookings in the context
     }
-  }, []);
+  };
+
+  const handleSortByDate = () => {
+    // Toggle sort order
+    const newSortOrder = sortByDate === "asc" ? "desc" : "asc";
+    setSortByDate(newSortOrder);
+
+    if (bookingContext) {
+      bookingContext.sortBookingsByDate(newSortOrder); // Sort bookings in the context
+    }
+  };
 
   if (!bookingContext) {
     return <div className="booking-table">Loading...</div>;
   }
 
   const { bookings, loading, error } = bookingContext;
+
+  const getStatusColor = (status: string) => {
+    switch (status) {
+      case "pending":
+        return <PendingIcon />; // You can change the color as per your design
+      case "confirmed":
+        return <SuccessIcon />;
+      case "cancelled":
+        return <CancelledIcon />;
+      default:
+        return "black"; // Default color
+    }
+  };
 
   return (
     <div className="booking-table">
@@ -29,41 +69,53 @@ const BookingTable = () => {
         <table>
           <thead>
             <tr>
-              <th>Booking ID</th>
               <th>
-                Date <SortIcon />{" "}
+                Date <SortIcon onClick={handleSortByDate} />
               </th>
               <th>
-                Time <SortIcon />
+                Time <SortIcon onClick={handleSortByTime} />
               </th>
-              <th>Name</th>
-              <th>Email</th>
-              <th>People</th>
               <th>
-                Status <SortIcon />
+                Name <SortIcon onClick={handleSortByDate} />
+              </th>
+              <th>
+                Email <SortIcon onClick={handleSortByDate} />
+              </th>
+              <th>
+                Phone No
+                <SortIcon onClick={handleSortByDate} />
+              </th>
+              <th>
+                People <SortIcon onClick={handleSortByDate} />
+              </th>
+              <th>
+                Status <SortIcon onClick={handleSortByTime} />
               </th>
             </tr>
           </thead>
           <tbody>
             {bookings.map((booking) => (
               <tr key={booking.id}>
-                <td>{booking.id}</td>
                 <td>{new Date(booking.date).toLocaleDateString()}</td>
                 <td>
-                  {new Date(`1970-01-01T${booking.time}Z`).toLocaleTimeString(
+                  {new Date(`1970-01-01T${booking.time}`).toLocaleTimeString(
                     [],
                     { hour: "2-digit", minute: "2-digit", hour12: false }
                   )}
                 </td>
                 <td>{booking.customer.name}</td>
                 <td>{booking.customer.email}</td>
+                <td>{booking.customer.phone}</td>
                 <td>{booking.numPeople}</td>
-                <td>{booking.status}</td>
+                <td onClick={openModal}>
+                  {getStatusColor(booking.status)} {booking.status} <EditIcon />
+                </td>
               </tr>
             ))}
           </tbody>
         </table>
       )}
+      {isModalOpen && <BookingModal closeModal={closeModal} />}
     </div>
   );
 };

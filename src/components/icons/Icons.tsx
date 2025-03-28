@@ -163,6 +163,7 @@ export const SidebarToggle = () => {
     <svg
       width={30}
       height={30}
+      className="toogle-sidebar-btn"
       viewBox="-0.5 0 25 25"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -211,6 +212,9 @@ export const SidebarToggle = () => {
 export const NotificationIcon = () => {
   return (
     <svg
+      width={22}
+      height={22}
+      className="notif-icon"
       viewBox="0 0 24 24"
       id="_24x24_On_Light_Notification-Alert"
       data-name="24x24/On Light/Notification-Alert"
@@ -230,7 +234,6 @@ export const NotificationIcon = () => {
           id="Shape"
           d="M6,17v-.5H2.25A2.253,2.253,0,0,1,0,14.25v-.382a2.542,2.542,0,0,1,1.415-2.289A1.247,1.247,0,0,0,2.1,10.572l.446-4.91A6.227,6.227,0,0,1,10.618.286a5.477,5.477,0,0,0-.635,1.374A4.794,4.794,0,0,0,8.75,1.5,4.7,4.7,0,0,0,4.045,5.8L3.6,10.708A2.739,2.739,0,0,1,2.089,12.92a1.055,1.055,0,0,0-.589.949v.382A.751.751,0,0,0,2.25,15h13A.751.751,0,0,0,16,14.25v-.382a1.053,1.053,0,0,0-.586-.948A2.739,2.739,0,0,1,13.9,10.708l-.2-2.18a5.473,5.473,0,0,0,1.526.221l.166,1.822a1.26,1.26,0,0,0,.686,1.005,2.547,2.547,0,0,1,1.418,2.29v.382a2.252,2.252,0,0,1-2.25,2.25H11.5V17A2.75,2.75,0,0,1,6,17Zm1.5,0A1.25,1.25,0,0,0,10,17v-.5H7.5ZM15.047,6.744A3.486,3.486,0,0,1,13.5,6.28L13.456,5.8a4.7,4.7,0,0,0-1.648-3.185,3.5,3.5,0,0,1,.61-1.417A6.221,6.221,0,0,1,14.95,5.662l.1,1.081v0Z"
           transform="translate(3.25 2.25)"
-          fill="#252d52"
         ></path>{" "}
         <path
           id="Shape-2"
@@ -247,7 +250,9 @@ export const NotificationIcon = () => {
 export const LigthTheme = () => {
   return (
     <svg
-      fill="#252d52"
+      width={24}
+      height={24}
+      className="light-theme-icon"
       viewBox="-5.5 0 32 32"
       version="1.1"
       xmlns="http://www.w3.org/2000/svg"
@@ -269,7 +274,14 @@ export const LigthTheme = () => {
 
 export const DarkTheme = () => {
   return (
-    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg
+      width={22}
+      height={22}
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className="dark-theme-icon"
+    >
       <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
       <g
         id="SVGRepo_tracerCarrier"
@@ -293,12 +305,12 @@ export const DarkTheme = () => {
 export const ProfileIcon = () => {
   return (
     <svg
-      width={20}
-      height={20}
+      width={16}
+      height={16}
       viewBox="0 0 20 20"
       version="1.1"
       xmlns="http://www.w3.org/2000/svg"
-      fill="#000000"
+      className="profile-icon"
     >
       <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
       <g
@@ -321,7 +333,6 @@ export const ProfileIcon = () => {
           <g
             id="Dribbble-Light-Preview"
             transform="translate(-420.000000, -2159.000000)"
-            fill="#515671"
           >
             {" "}
             <g id="icons" transform="translate(56.000000, 160.000000)">
@@ -346,8 +357,9 @@ export const DashboarIcon = () => {
   return (
     <svg
       viewBox="0 0 24 24"
-      width={24}
-      height={24}
+      width={20}
+      height={20}
+      className="dashboard-icon"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
@@ -361,19 +373,16 @@ export const DashboarIcon = () => {
         {" "}
         <path
           d="M3 8.976C3 4.05476 4.05476 3 8.976 3H15.024C19.9452 3 21 4.05476 21 8.976V15.024C21 19.9452 19.9452 21 15.024 21H8.976C4.05476 21 3 19.9452 3 15.024V8.976Z"
-          stroke="#323232"
           strokeWidth="2"
         ></path>{" "}
         <path
           d="M21 9L3 9"
-          stroke="#323232"
           strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
         ></path>{" "}
         <path
           d="M9 21L9 9"
-          stroke="#323232"
           strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
@@ -386,9 +395,9 @@ export const DashboarIcon = () => {
 export const OrderIcon = () => {
   return (
     <svg
-      width={24}
-      height={24}
-      fill="#323232"
+      className="order-icon"
+      width={20}
+      height={20}
       viewBox="0 0 32 32"
       id="dish"
       version="1.1"
@@ -412,16 +421,28 @@ export const OrderIcon = () => {
   );
 };
 
-export const MenuIcon = () => {
+interface BookingIconProps {
+  className?: string; // Optional className prop
+}
+
+interface CustomerIconProps {
+  className?: string; // Optional className prop
+}
+
+interface MenuIconProps {
+  className?: string; // Optional className prop
+}
+
+export const MenuIcon: React.FC<MenuIconProps> = ({ className }) => {
   return (
     <svg
-      width={24}
-      height={24}
+      className={`menu-icon ${className || ""}`}
+      width={20}
+      height={20}
       version="1.1"
       id="_x32_"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 512 512"
-      fill="#000000"
     >
       <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
       <g
@@ -451,12 +472,12 @@ export const MenuIcon = () => {
   );
 };
 
-export const BookingIcon = () => {
+export const BookingIcon: React.FC<BookingIconProps> = ({ className }) => {
   return (
     <svg
-      width={24}
-      height={24}
-      fill="#323232"
+      className={`booking-icon ${className || ""}`}
+      width={20}
+      height={20}
       viewBox="0 0 24 24"
       xmlns="http://www.w3.org/2000/svg"
     >
@@ -473,9 +494,15 @@ export const BookingIcon = () => {
   );
 };
 
-export const CustomerIcon = () => {
+export const CustomerIcon: React.FC<CustomerIconProps> = ({ className }) => {
   return (
-    <svg width={24} height={24} fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg
+      className={`cust-icon ${className || ""}`}
+      width={20}
+      height={20}
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
       <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
       <g
         id="SVGRepo_tracerCarrier"
@@ -488,7 +515,6 @@ export const CustomerIcon = () => {
           fillRule="evenodd"
           clipRule="evenodd"
           d="M3 18C3 15.3945 4.66081 13.1768 6.98156 12.348C7.61232 12.1227 8.29183 12 9 12C9.70817 12 10.3877 12.1227 11.0184 12.348C11.3611 12.4703 11.6893 12.623 12 12.8027C12.3107 12.623 12.6389 12.4703 12.9816 12.348C13.6123 12.1227 14.2918 12 15 12C15.7082 12 16.3877 12.1227 17.0184 12.348C19.3392 13.1768 21 15.3945 21 18V21H15.75V19.5H19.5V18C19.5 15.5147 17.4853 13.5 15 13.5C14.4029 13.5 13.833 13.6163 13.3116 13.8275C14.3568 14.9073 15 16.3785 15 18V21H3V18ZM9 11.25C8.31104 11.25 7.66548 11.0642 7.11068 10.74C5.9977 10.0896 5.25 8.88211 5.25 7.5C5.25 5.42893 6.92893 3.75 9 3.75C10.2267 3.75 11.3158 4.33901 12 5.24963C12.6842 4.33901 13.7733 3.75 15 3.75C17.0711 3.75 18.75 5.42893 18.75 7.5C18.75 8.88211 18.0023 10.0896 16.8893 10.74C16.3345 11.0642 15.689 11.25 15 11.25C14.311 11.25 13.6655 11.0642 13.1107 10.74C12.6776 10.4869 12.2999 10.1495 12 9.75036C11.7001 10.1496 11.3224 10.4869 10.8893 10.74C10.3345 11.0642 9.68896 11.25 9 11.25ZM13.5 18V19.5H4.5V18C4.5 15.5147 6.51472 13.5 9 13.5C11.4853 13.5 13.5 15.5147 13.5 18ZM11.25 7.5C11.25 8.74264 10.2426 9.75 9 9.75C7.75736 9.75 6.75 8.74264 6.75 7.5C6.75 6.25736 7.75736 5.25 9 5.25C10.2426 5.25 11.25 6.25736 11.25 7.5ZM15 5.25C13.7574 5.25 12.75 6.25736 12.75 7.5C12.75 8.74264 13.7574 9.75 15 9.75C16.2426 9.75 17.25 8.74264 17.25 7.5C17.25 6.25736 16.2426 5.25 15 5.25Z"
-          fill="#323232"
         ></path>{" "}
       </g>
     </svg>
@@ -498,8 +524,9 @@ export const CustomerIcon = () => {
 export const ReportIcon = () => {
   return (
     <svg
-      width={24}
-      height={24}
+      className="report-icon"
+      width={20}
+      height={20}
       viewBox="0 0 24 24"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -514,13 +541,11 @@ export const ReportIcon = () => {
         {" "}
         <path
           d="M7 14L8.79689 11.8437C9.50894 10.9893 9.86496 10.562 10.3333 10.562C10.8017 10.562 11.1577 10.9893 11.8698 11.8437L12.1302 12.1563C12.8423 13.0107 13.1983 13.438 13.6667 13.438C14.135 13.438 14.4911 13.0107 15.2031 12.1563L17 10"
-          stroke="#323232"
           strokeWidth="1.5"
           strokeLinecap="round"
         ></path>{" "}
         <path
           d="M22 12C22 16.714 22 19.0711 20.5355 20.5355C19.0711 22 16.714 22 12 22C7.28595 22 4.92893 22 3.46447 20.5355C2 19.0711 2 16.714 2 12C2 7.28595 2 4.92893 3.46447 3.46447C4.92893 2 7.28595 2 12 2C16.714 2 19.0711 2 20.5355 3.46447C21.5093 4.43821 21.8356 5.80655 21.9449 8"
-          stroke="#323232"
           strokeWidth="1.5"
           strokeLinecap="round"
         ></path>{" "}
@@ -532,8 +557,9 @@ export const ReportIcon = () => {
 export const SettingIcon = () => {
   return (
     <svg
-      width={24}
-      height={24}
+      className="setting-icon"
+      width={20}
+      height={20}
       viewBox="0 0 24 24"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -548,7 +574,6 @@ export const SettingIcon = () => {
         {" "}
         <path
           d="M12 15C13.6569 15 15 13.6569 15 12C15 10.3431 13.6569 9 12 9C10.3431 9 9 10.3431 9 12C9 13.6569 10.3431 15 12 15Z"
-          stroke="#323232"
           strokeWidth="1.5"
           strokeMiterlimit="10"
           strokeLinecap="round"
@@ -556,7 +581,6 @@ export const SettingIcon = () => {
         ></path>{" "}
         <path
           d="M2 12.8799V11.1199C2 10.0799 2.85 9.21994 3.9 9.21994C5.71 9.21994 6.45 7.93994 5.54 6.36994C5.02 5.46994 5.33 4.29994 6.24 3.77994L7.97 2.78994C8.76 2.31994 9.78 2.59994 10.25 3.38994L10.36 3.57994C11.26 5.14994 12.74 5.14994 13.65 3.57994L13.76 3.38994C14.23 2.59994 15.25 2.31994 16.04 2.78994L17.77 3.77994C18.68 4.29994 18.99 5.46994 18.47 6.36994C17.56 7.93994 18.3 9.21994 20.11 9.21994C21.15 9.21994 22.01 10.0699 22.01 11.1199V12.8799C22.01 13.9199 21.16 14.7799 20.11 14.7799C18.3 14.7799 17.56 16.0599 18.47 17.6299C18.99 18.5399 18.68 19.6999 17.77 20.2199L16.04 21.2099C15.25 21.6799 14.23 21.3999 13.76 20.6099L13.65 20.4199C12.75 18.8499 11.27 18.8499 10.36 20.4199L10.25 20.6099C9.78 21.3999 8.76 21.6799 7.97 21.2099L6.24 20.2199C5.33 19.6999 5.02 18.5299 5.54 17.6299C6.45 16.0599 5.71 14.7799 3.9 14.7799C2.85 14.7799 2 13.9199 2 12.8799Z"
-          stroke="#323232"
           strokeWidth="1.5"
           strokeMiterlimit="10"
           strokeLinecap="round"
@@ -567,16 +591,40 @@ export const SettingIcon = () => {
   );
 };
 
-export const SortIcon = () => {
+export const SortIcon = ({ onClick }: { onClick: () => void }) => {
   return (
     <svg
-      fill="#323232"
       width={12}
       height={12}
       className="sort-icon"
       viewBox="0 0 24 24"
       xmlns="http://www.w3.org/2000/svg"
       stroke="#323232"
+      strokeWidth="0.00024000000000000003"
+      onClick={onClick} // Add onClick handler
+    >
+      <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+      <g
+        id="SVGRepo_tracerCarrier"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      ></g>
+      <g id="SVGRepo_iconCarrier">
+        <path d="M16.29,14.29,12,18.59l-4.29-4.3a1,1,0,0,0-1.42,1.42l5,5a1,1,0,0,0,1.42,0l5-5a1,1,0,0,0-1.42-1.42ZM7.71,9.71,12,5.41l4.29,4.3a1,1,0,0,0,1.42,0,1,1,0,0,0,0-1.42l-5-5a1,1,0,0,0-1.42,0l-5,5A1,1,0,0,0,7.71,9.71Z"></path>
+      </g>
+    </svg>
+  );
+};
+
+export const SecondarySortIcon = () => {
+  return (
+    <svg
+      width={12}
+      height={12}
+      className="secondary-sort-icon"
+      viewBox="0 0 24 24"
+      stroke="#323232"
+      xmlns="http://www.w3.org/2000/svg"
       strokeWidth="0.00024000000000000003"
     >
       <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
@@ -592,7 +640,218 @@ export const SortIcon = () => {
   );
 };
 
+export const PendingIcon = () => {
+  return (
+    <svg
+      width={25}
+      height={25}
+      viewBox="0 0 1024 1024"
+      className="pending-icon"
+      version="1.1"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <g id="SVGRepo_bgCarrier" strokeWidth="1"></g>
+      <g
+        id="SVGRepo_tracerCarrier"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      ></g>
+      <g id="SVGRepo_iconCarrier">
+        <path d="M511.9 183c-181.8 0-329.1 147.4-329.1 329.1s147.4 329.1 329.1 329.1c181.8 0 329.1-147.4 329.1-329.1S693.6 183 511.9 183z m0 585.2c-141.2 0-256-114.8-256-256s114.8-256 256-256 256 114.8 256 256-114.9 256-256 256z"></path>
+        <path d="M548.6 365.7h-73.2v161.4l120.5 120.5 51.7-51.7-99-99z"></path>
+      </g>
+    </svg>
+  );
+};
+
+export const SuccessIcon = () => {
+  return (
+    <svg
+      width={20}
+      height={20}
+      viewBox="0 0 512 512"
+      version="1.1"
+      xmlns="http://www.w3.org/2000/svg"
+      className="confirmed-icon"
+    >
+      <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+      <g
+        id="SVGRepo_tracerCarrier"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      ></g>
+      <g id="SVGRepo_iconCarrier">
+        {" "}
+        <title>success</title>{" "}
+        <g
+          id="Page-1"
+          stroke="none"
+          strokeWidth="1"
+          fill="none"
+          fillRule="evenodd"
+        >
+          {" "}
+          <g id="add-copy" transform="translate(42.666667, 42.666667)">
+            {" "}
+            <path
+              d="M213.333333,3.55271368e-14 C95.51296,3.55271368e-14 3.55271368e-14,95.51296 3.55271368e-14,213.333333 C3.55271368e-14,331.153707 95.51296,426.666667 213.333333,426.666667 C331.153707,426.666667 426.666667,331.153707 426.666667,213.333333 C426.666667,95.51296 331.153707,3.55271368e-14 213.333333,3.55271368e-14 Z M213.333333,384 C119.227947,384 42.6666667,307.43872 42.6666667,213.333333 C42.6666667,119.227947 119.227947,42.6666667 213.333333,42.6666667 C307.43872,42.6666667 384,119.227947 384,213.333333 C384,307.43872 307.438933,384 213.333333,384 Z M293.669333,137.114453 L323.835947,167.281067 L192,299.66912 L112.916693,220.585813 L143.083307,190.4192 L192,239.335893 L293.669333,137.114453 Z"
+              id="Shape"
+            >
+              {" "}
+            </path>{" "}
+          </g>{" "}
+        </g>{" "}
+      </g>
+    </svg>
+  );
+};
+
+export const CancelledIcon = () => {
+  return (
+    <svg
+      width={20}
+      height={20}
+      className="cancel-icon"
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+      <g
+        id="SVGRepo_tracerCarrier"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      ></g>
+      <g id="SVGRepo_iconCarrier">
+        {" "}
+        <path
+          d="M12 16H12.01M12 8V12M12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21Z"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        ></path>{" "}
+      </g>
+    </svg>
+  );
+};
+
+export const DownArrow = () => {
+  return (
+    <svg
+      width={10}
+      height={10}
+      viewBox="0 0 1024 1024"
+      className="icon-down"
+      version="1.1"
+      xmlns="http://www.w3.org/2000/svg"
+      fill="#000000"
+    >
+      <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+      <g
+        id="SVGRepo_tracerCarrier"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      ></g>
+      <g id="SVGRepo_iconCarrier">
+        <path
+          d="M903.232 256l56.768 50.432L512 768 64 306.432 120.768 256 512 659.072z"
+          fill="#000000"
+        ></path>
+      </g>
+    </svg>
+  );
+};
+
+export const EditIcon = () => {
+  return (
+    <svg
+      className="edit-icon"
+      width={20}
+      height={20}
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+      <g
+        id="SVGRepo_tracerCarrier"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      ></g>
+      <g id="SVGRepo_iconCarrier">
+        {" "}
+        <path
+          d="M12.4445 19.6875H20.9445M14.4443 5.68747L5.44587 14.6859C4.78722 15.3446 4.26719 16.1441 4.10888 17.062C3.94903 17.9888 3.89583 19.139 4.44432 19.6875C4.99281 20.236 6.14299 20.1828 7.0698 20.0229C7.98772 19.8646 8.78722 19.3446 9.44587 18.6859L18.4443 9.68747M14.4443 5.68747C14.4443 5.68747 17.4443 2.68747 19.4443 4.68747C21.4443 6.68747 18.4443 9.68747 18.4443 9.68747M14.4443 5.68747L18.4443 9.68747"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        ></path>{" "}
+      </g>
+    </svg>
+  );
+};
+
+export const CloseIcon = () => {
+  return (
+    <svg
+      width={20}
+      height={20}
+      className="close-icon"
+      viewBox="-0.5 0 25 25"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+      <g
+        id="SVGRepo_tracerCarrier"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      ></g>
+      <g id="SVGRepo_iconCarrier">
+        {" "}
+        <path
+          d="M3 21.32L21 3.32001"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        ></path>{" "}
+        <path
+          d="M3 3.32001L21 21.32"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        ></path>{" "}
+      </g>
+    </svg>
+  );
+};
+
+export const TimeIcon = () => {
+  return (
+    <svg width={20} height={20} className="time-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+      <g
+        id="SVGRepo_tracerCarrier"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      ></g>
+      <g id="SVGRepo_iconCarrier">
+        {" "}
+        <path
+          d="M23 12C23 18.0751 18.0751 23 12 23C5.92487 23 1 18.0751 1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12ZM3.00683 12C3.00683 16.9668 7.03321 20.9932 12 20.9932C16.9668 20.9932 20.9932 16.9668 20.9932 12C20.9932 7.03321 16.9668 3.00683 12 3.00683C7.03321 3.00683 3.00683 7.03321 3.00683 12Z"
+          
+        ></path>{" "}
+        <path
+          d="M12 5C11.4477 5 11 5.44771 11 6V12.4667C11 12.4667 11 12.7274 11.1267 12.9235C11.2115 13.0898 11.3437 13.2343 11.5174 13.3346L16.1372 16.0019C16.6155 16.278 17.2271 16.1141 17.5032 15.6358C17.7793 15.1575 17.6155 14.5459 17.1372 14.2698L13 11.8812V6C13 5.44772 12.5523 5 12 5Z"
+          
+        ></path>{" "}
+      </g>
+    </svg>
+  );
+};
+
 export default {
+  TimeIcon,
   ErrorIcon,
   PwdShowIcon,
   MailSendIcon,
@@ -609,4 +868,11 @@ export default {
   ReportIcon,
   SettingIcon,
   SortIcon,
+  SecondarySortIcon,
+  PendingIcon,
+  SuccessIcon,
+  CancelledIcon,
+  DownArrow,
+  EditIcon,
+  CloseIcon,
 };

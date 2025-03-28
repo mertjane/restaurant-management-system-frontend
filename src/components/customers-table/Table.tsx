@@ -2,14 +2,12 @@ import React, { useContext } from "react";
 import "./table.component.scss";
 import Pagination from "../pagination/Pagination";
 import { CustomersContext } from "../../context/CustomersContext";
-
+import { SecondarySortIcon } from "../icons/Icons";
 
 const Table: React.FC = () => {
-  const { customers, totalPages, loading, error, fetchCustomers } = useContext(CustomersContext)!;
+  const { customers, totalPages, loading, error, fetchCustomers } =
+    useContext(CustomersContext)!;
   const [currentPage, setCurrentPage] = React.useState<number>(1);
-  
-
-
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
@@ -19,17 +17,24 @@ const Table: React.FC = () => {
   if (loading) return <div>Loading customers...</div>;
   if (error) return <div>Error: {error}</div>;
 
-
   return (
     <div className="table-container">
       <h2>Customers</h2>
       <table>
         <thead>
           <tr>
-            <th>#</th>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Phone</th>
+            <th>
+              # <SecondarySortIcon />{" "}
+            </th>
+            <th>
+              Name <SecondarySortIcon />
+            </th>
+            <th>
+              Email <SecondarySortIcon />
+            </th>
+            <th>
+              Phone <SecondarySortIcon />
+            </th>
           </tr>
         </thead>
         <tbody>

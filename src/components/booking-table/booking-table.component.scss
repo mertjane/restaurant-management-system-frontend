@@ -2,7 +2,7 @@
     overflow-x: auto;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
     padding: 0 16px 16px 32px;
-    background: #fff;
+    background: var(--bg-color);
     min-height: 100%;
     max-height: 100%;
     display: flex;
@@ -18,23 +18,32 @@
     table {
         width: 100%;
         border-collapse: collapse;
-        border: 1px solid #e5e5e5;
+        border: var(--border);
         th,
         td {
-            padding: 8px 16px;
+            padding: 12px 16px;
             text-align: left;
-            border: 1px solid #e5e5e5;
-            padding: 12px;
+            border: var(--border);
+            
+        }
+
+        td:nth-child(7){
+            color: var(--text-color);
+            font-weight: 500;
+            display: flex;
+            position: relative;
+            cursor: pointer;
         }
 
         th {
             position: relative;
-            background: #f4f4f4;
+            background: var(--secondary-bg);
             font-weight: 500;
+            width: 150px;
         }
 
         tr:hover {
-            background: #f9f9f9;
+            background: var(--secondary-bg);
         }
 
         tbody tr:last-child td {

@@ -16,14 +16,45 @@
     height: 25px;
     cursor: pointer;
     svg {
-        transition: .3s;
+        transition: 0.3s;
     }
     &:hover > svg path {
         stroke: #043c42;
     }
 }
 
-.email-icon-wrapper{
+.notif-icon {
+    path:nth-child(2) {
+        fill: var(--icon-color);
+    }
+}
+
+.light-theme-icon {
+    fill: var(--icon-color);
+}
+
+.dark-theme-icon {
+    path {
+        stroke: var(--icon-color);
+    }
+}
+
+.profile-icon {
+    g {
+        fill: var(--icon-color);
+    }
+}
+
+.toogle-sidebar-btn {
+    background-color: #006239;
+    border-radius: 5px;
+    padding: 2px;
+    path {
+        stroke: var(--secondary-contrast-bg);
+    }
+}
+
+.email-icon-wrapper {
     margin: 0 auto;
 }
 
@@ -33,8 +64,129 @@
     right: 10px;
     top: 1.2em;
     cursor: pointer;
-  
+    fill: var(--icon-color);
     &:hover path {
-      fill: #888;
+        fill: #888;
     }
-  }
+}
+
+.secondary-sort-icon {
+    position: absolute;
+    z-index: 998;
+    right: 10px;
+    top: 1.2em;
+    cursor: pointer;
+    fill: var(--icon-color);
+    &:hover path {
+        fill: #888;
+    }
+}
+
+.setting-icon {
+    path {
+        stroke: var(--icon-color);
+    }
+}
+.report-icon {
+    path {
+        stroke: var(--icon-color);
+    }
+}
+.cust-icon {
+    path {
+        fill: var(--icon-color);
+    }
+
+    &.active {
+        path {
+            fill: var(--icon-focus-color);
+        }
+    }
+}
+.booking-icon {
+    fill: var(--icon-color);
+
+    &.active {
+        path {
+            fill: var(--icon-focus-color);
+        }
+    }
+}
+.menu-icon {
+    fill: var(--icon-color);
+
+    &.active {
+        fill: var(--icon-focus-color);
+    }
+}
+.order-icon {
+    fill: var(--icon-color);
+}
+.dashboard-icon {
+    path {
+        stroke: var(--icon-color);
+    }
+}
+
+.pending-icon {
+    position: absolute;
+    right: 32px;
+    top: 15px;
+    fill: var(--warning-color);
+}
+
+.confirmed-icon {
+    position: absolute;
+    right: 34px;
+    top: 15px;
+    path {
+        fill: var(--success-color);
+    }
+}
+
+.cancel-icon {
+    position: absolute;
+    right: 34px;
+    top: 15px;
+    path {
+        stroke: var(--error-color);
+    }
+}
+
+.edit-icon {
+    position: absolute;
+    right: 7px;
+    top: 15px;
+    cursor: pointer;
+    transition: 0.3s;
+    path {
+        stroke: var(--icon-color);
+    }
+
+    &:hover {
+        background-color: #ddd;
+        border-radius: 3px;
+        transition: 0.3s;
+    }
+}
+
+.close-icon {
+    path {
+        stroke: var(--icon-color);
+    }
+}
+
+.icon-down {
+    position: absolute;
+    right: 10px;
+    top: 20px;
+    path {
+        fill: var(--icon-color);
+    }
+}
+
+.time-icon {
+    path{
+        fill: var(--icon-color);
+    }
+}

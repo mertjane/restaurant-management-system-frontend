@@ -45,16 +45,23 @@ const Sidebar: React.FC = () => {
             <OrderIcon />
             <a href="orders">Orders</a>
           </li>
-          <li>
-            <MenuIcon />
-            <a href="menu">Menu</a>
+          <li
+            onClick={() => handleItemClick("menu")}
+            className={activeItem === "menu" ? "active" : ""}
+          >
+            <Link to="/dashboard/menu" className="sidebar-link">
+              <MenuIcon className={activeItem === "menu" ? "active" : ""} />
+              <span>Menu</span>
+            </Link>
           </li>
           <li
             onClick={() => handleItemClick("bookings")}
             className={activeItem === "bookings" ? "active" : ""}
           >
             <Link to="/dashboard/bookings" className="sidebar-link">
-              <BookingIcon />
+              <BookingIcon
+                className={activeItem === "bookings" ? "active" : ""}
+              />
               <span>Bookings</span>
             </Link>
           </li>
@@ -63,7 +70,9 @@ const Sidebar: React.FC = () => {
             className={activeItem === "customers" ? "active" : ""}
           >
             <Link to="/dashboard/customers" className="sidebar-link">
-              <CustomerIcon />
+              <CustomerIcon
+                className={activeItem === "customers" ? "active" : ""}
+              />
               <span>Customers</span>
             </Link>
           </li>

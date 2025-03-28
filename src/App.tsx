@@ -6,6 +6,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import { useState } from "react";
 import Customers from "./pages/customers/Customers";
 import Bookings from "./pages/bookings/Bookings";
+import MenuComponent from "./pages/menu/MenuComponent";
 
 function App() {
   const [form, setForm] = useState<
@@ -30,6 +31,7 @@ function App() {
             {/* Nested Route inside Dashboard */}
             <Route path="customers" element={<Customers />} />
             <Route path="bookings" element={<Bookings />} />
+            <Route path="menu" element={<MenuComponent />} />
           </Route>
         </Routes>
       </Router>

@@ -1,26 +1,46 @@
-.auth-header {
-    height: 80px;
-    background-color: #222;
+.menu-header {
+    position: relative;
     padding: 14px 2rem;
     display: flex;
     align-items: center;
-    h3 {
-        font-weight: 100;
-        color: #ffff;
-    }
+    grid-area: 1 / 1 / 2 / 4;
+    background-image: url("../../assets/bg.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(34, 34, 34, 0.4); /* Semi-transparent background */
+        backdrop-filter: blur(5px); /* Apply the blur effect */
+        z-index: 999;  /* Keep the filter effect behind content */
+      }
+
+      h2{
+        position: absolute;
+        z-index: 1000;
+        font-family: var(--font-sidebar-header);
+        font-size: 3em;
+        transform: translateX(50%);
+        color: #fff;
+      }
 }
 
 .dashboard-header {
     max-height: 70px;
-    border-bottom: 1px solid #e5e5e5;
+    border-bottom: var(--border);
     grid-area: 1 / 2 / 2 / 8;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 0 2em;
     position: relative;
-    transition: margin-left 0.3s ease-in-out; 
-    background-color: #fff;
+    transition: margin-left 0.3s ease-in-out;
+    background-color: var(--header-bg);
     &.open {
         margin-left: 0;
     }
@@ -47,7 +67,7 @@
             display: flex;
             align-items: center;
             gap: 1.5em;
-            li{
+            li {
                 width: 37px;
                 height: 37px;
                 display: flex;
@@ -55,11 +75,11 @@
                 justify-content: center;
                 border-radius: 50%;
                 padding: 5px;
-                transition: .3s;
+                transition: 0.3s;
                 cursor: pointer;
-                &:hover{
-                    background-color: #f2efea;
-                    transition: .3s;
+                &:hover {
+                    background-color: var(--focus-bg);
+                    transition: 0.3s;
                 }
             }
         }

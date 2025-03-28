@@ -15,23 +15,25 @@ interface DashboardHeaderProps {
 }
 
 
-export const AuthHeader = () => {
-  return (
-    <header className="auth-header">
-      <h3>System Management</h3>
-    </header>
+/** DASHBOARD HEADER */
+export const DashboardHeader: React.FC<DashboardHeaderProps> = ({
+  openSidebar,
+  toggleSidebar,
+}) => {
+  const [theme, setTheme] = useState<string>(
+    localStorage.getItem("theme") || "light"
   );
-};
 
-export const DashboardHeader:React.FC<DashboardHeaderProps> = ({openSidebar, toggleSidebar}) => {
-  const [changeTheme, setChangeTheme] = useState<string>("light");
   const [showProfileDropdown, setShowProfileDropdown] =
     useState<boolean>(false);
   const [showNotificationDropdown, setShowNotificationDropdown] =
     useState<boolean>(false);
 
   const toggleTheme = () => {
-    setChangeTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
+    setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
+
+    // Apply theme to <html> tag
+    document.documentElement.setAttribute("data-theme", theme);
   };
 
   // Close dropdowns when clicking outside
@@ -48,12 +50,15 @@ export const DashboardHeader:React.FC<DashboardHeaderProps> = ({openSidebar, tog
     return () => document.removeEventListener("click", handleClickOutside);
   }, []);
 
+  // Apply theme to <html> attribute
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", theme);
+    localStorage.setItem("theme", theme);
+  }, [theme]);
+
   return (
-    <header  className={`dashboard-header ${openSidebar ? "open" : "closed"}`}>
-      <div
-        onClick={toggleSidebar}
-        className="toggle-btn"
-      >
+    <header className={`dashboard-header ${openSidebar ? "open" : "closed"}`}>
+      <div onClick={toggleSidebar} className="toggle-btn">
         <SidebarToggle />
       </div>
       <div className="control-unit">
@@ -67,7 +72,7 @@ export const DashboardHeader:React.FC<DashboardHeaderProps> = ({openSidebar, tog
             <NotificationIcon />
           </li>
           <li onClick={toggleTheme}>
-            {changeTheme === "dark" ? <LigthTheme /> : <DarkTheme />}
+            {theme === "dark" ? <LigthTheme /> : <DarkTheme />}
           </li>
           <li
             className="dropdown-wrapper"
@@ -83,7 +88,15 @@ export const DashboardHeader:React.FC<DashboardHeaderProps> = ({openSidebar, tog
   );
 };
 
+export const MenuHeader = () => {
+  return (
+    <header className="menu-header">
+     <h2>Menu</h2>
+    </header>
+  );
+};
+
 export default {
-  AuthHeader,
+  MenuHeader,
   DashboardHeader,
 };
