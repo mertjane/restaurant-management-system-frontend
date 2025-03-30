@@ -75,6 +75,7 @@ export interface Bookings {
     numPeople: number;
     status: string;
     customer: {
+        customer_id: number;
         name: string;
         email: string;
         phone: string;

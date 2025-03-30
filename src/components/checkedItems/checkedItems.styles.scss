@@ -1,0 +1,32 @@
+.checked-items-wrapper {
+  position: absolute;
+  left: 10%;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  ul {
+    border: var(--border);
+    max-width: auto;
+    padding: 6px 18px;
+    border-radius: 32px;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    li {
+      color: var(--icon-color);
+      font-weight: 500;
+      font-size: 13px;
+    }
+  }
+
+  span{
+    font-size: 13px;
+    color: var(--icon-color);
+    cursor: pointer;
+    transition: .3s;
+    &:hover{
+      color: var(--text-color);
+      transition: .3s;
+    }
+  }
+}

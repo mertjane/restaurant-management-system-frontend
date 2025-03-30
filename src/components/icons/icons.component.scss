@@ -130,14 +130,14 @@
 
 .pending-icon {
     position: absolute;
-    right: 32px;
+    right: 8px;
     top: 15px;
     fill: var(--warning-color);
 }
 
 .confirmed-icon {
     position: absolute;
-    right: 34px;
+    right: 10px;
     top: 15px;
     path {
         fill: var(--success-color);
@@ -146,7 +146,7 @@
 
 .cancel-icon {
     position: absolute;
-    right: 34px;
+    right: 10px;
     top: 15px;
     path {
         stroke: var(--error-color);
@@ -154,19 +154,9 @@
 }
 
 .edit-icon {
-    position: absolute;
-    right: 7px;
-    top: 15px;
-    cursor: pointer;
-    transition: 0.3s;
+    padding: 4px;
     path {
         stroke: var(--icon-color);
-    }
-
-    &:hover {
-        background-color: #ddd;
-        border-radius: 3px;
-        transition: 0.3s;
     }
 }
 
@@ -176,17 +166,28 @@
     }
 }
 
-.icon-down {
-    position: absolute;
-    right: 10px;
-    top: 20px;
+ul .icon-down {
+    
+    
+    path {
+        fill: var(--icon-color);
+        transition: 0.3s;
+    }
+}
+
+li:hover .icon-down path {
+    fill: var(--text-color);
+    transition: 0.3;
+}
+
+.time-icon {
     path {
         fill: var(--icon-color);
     }
 }
 
-.time-icon {
-    path{
+.filter-icon {
+    path {
         fill: var(--icon-color);
     }
 }

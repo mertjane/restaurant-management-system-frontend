@@ -3,6 +3,7 @@ import {
   BookingIcon,
   CustomerIcon,
   DashboarIcon,
+  DownArrow,
   MenuIcon,
   OrderIcon,
   ReportIcon,
@@ -11,8 +12,12 @@ import {
 import { Link } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import { RestaurantContext } from "../../context/RestaurantContext";
+import { PeopleCheckbox, StatusCheckbox } from "../checkbox/Checkbox";
+import { sidebarProps } from "./sidebarProps";
 
-const Sidebar: React.FC = () => {
+
+
+export const DashboardSidebar: React.FC = () => {
   const [activeItem, setActiveItem] = useState<string>("dashboard");
   const { restaurants } = useContext(RestaurantContext);
 
@@ -90,4 +95,83 @@ const Sidebar: React.FC = () => {
   );
 };
 
-export default Sidebar;
+export const FilterSidebar: React.FC<sidebarProps> = ({
+  isSidebarOpen,
+  selectedPeople,
+  onCheckboxChange,
+  clearSelectedPeople
+}) => {
+  const [expandFilter, setExpandFilter] = useState<string | null>(null);
+
+  const toggleExpand = (filter: string) => {
+    setExpandFilter((prev) => (prev === filter ? null : filter));
+  };
+
+  return (
+    <div className={`fsidebar-container ${isSidebarOpen ? "open" : ""}`}>
+      <header>
+        <h4>Filter Bookings</h4>
+      </header>
+      <div className="fs-body">
+        <ul>
+          {["Date", "Time", "People", "Status"].map((filter) => (
+            <li
+              key={filter}
+              onClick={() => toggleExpand(filter)}
+              className={`filter-item ${
+                expandFilter === filter ? "expanded" : ""
+              }`}
+            >
+              <div className="filter-header">
+                {filter} <DownArrow />
+              </div>
+              <div
+                className={`filter-content ${
+                  expandFilter === filter ? "show" : ""
+                }`}
+              >
+                {filter === "Date" && (
+                  <div className="date-range-wrapper">
+                    <p>
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Quas repellendus quis ex?
+                    </p>
+                  </div>
+                )}
+                {filter === "Time" && (
+                  <div className="time-range-wrapper">Time Picker</div>
+                )}
+                {filter === "People" && (
+                  <div className="people-range-wrapper">
+                    <ul className="custom-checkboxes">
+                      <PeopleCheckbox
+                        selectedPeople={selectedPeople}
+                        onCheckboxChange={onCheckboxChange}
+                        clearSelectedPeople={clearSelectedPeople}
+                      />
+                    </ul>
+                  </div>
+                )}
+                {filter === "Status" && (
+                  <div className="status-range-wrapper">
+                    <ul className="custom-checkboxes">
+                      <StatusCheckbox />
+                    </ul>
+                  </div>
+                )}
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <footer>
+        <button>Confirm</button>
+      </footer>
+    </div>
+  );
+};
+
+export default {
+  DashboardSidebar,
+  FilterSidebar,
+};

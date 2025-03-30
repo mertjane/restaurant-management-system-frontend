@@ -3,7 +3,7 @@ import { DashboardHeader } from "../../components/header/Header";
 import { Outlet } from "react-router-dom"; // Import Outlet for nested routing
 import "./Dashboard.scss";
 
-import Sidebar from "../../components/sidebar/Sidebar";
+import { DashboardSidebar } from "../../components/sidebar/Sidebar";
 
 const Dashboard = () => {
   const [openSidebar, setOpenSidebar] = useState<boolean>(true);
@@ -16,7 +16,7 @@ const Dashboard = () => {
         toggleSidebar={toggleSidebar}
       />
       <aside className={`sidebar ${openSidebar ? "open" : "closed"}`}>
-        <Sidebar />
+        <DashboardSidebar />
       </aside>
 
       <main className={`dashboard-main ${openSidebar ? "open" : "closed"}`}>

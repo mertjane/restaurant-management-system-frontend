@@ -15,19 +15,19 @@
         left: 0;
         right: 0;
         bottom: 0;
-        background-color: rgba(34, 34, 34, 0.4); /* Semi-transparent background */
-        backdrop-filter: blur(5px); /* Apply the blur effect */
-        z-index: 999;  /* Keep the filter effect behind content */
-      }
+        background-color: rgba(34, 34, 34, 0.4);
+        backdrop-filter: blur(5px);
+        z-index: 999;
+    }
 
-      h2{
+    h2 {
         position: absolute;
         z-index: 1000;
         font-family: var(--font-sidebar-header);
         font-size: 3em;
         transform: translateX(50%);
         color: #fff;
-      }
+    }
 }
 
 .dashboard-header {

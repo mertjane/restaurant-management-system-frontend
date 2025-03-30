@@ -1,5 +1,3 @@
-
-
 .sidebar-container {
     height: 100%;
     .sidebar-header {
@@ -41,7 +39,7 @@
                     background: var(--focus-bg); // Change to your preferred highlight color
 
                     .sidebar-link {
-                        span{
+                        span {
                             color: var(--text-color);
                         }
                     }
@@ -54,7 +52,7 @@
                     text-decoration: none;
                     color: inherit;
                     width: 100%;
-                    span{
+                    span {
                         color: var(--secondary-text-color);
                     }
                 }
@@ -68,4 +66,157 @@
             }
         }
     }
+}
+
+.fsidebar-container {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 400px;
+    height: 100%;
+    background: var(--bg-color);
+    box-shadow: -4px 0 6px rgba(0, 0, 0, 0.1);
+    border-left: var(--border);
+    z-index: 1005; // Higher than the overlay
+    transition: transform 0.3s ease-in-out; // Smooth transition
+    transform: translateX(100%); // Initially hidden (moved to the right)
+
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+
+    &.open {
+        transform: translateX(0);
+    }
+
+    header {
+        font-weight: bold;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        padding: 14px 0 4px 0;
+        border-bottom: var(--border);
+    }
+
+    .fs-body {
+        padding: 0 4px;
+        height: 70%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            height: 75%;
+            width: 100%;
+            position: relative;
+            gap: 3em;
+            padding: 4em 0;
+            .filter-item {
+                position: relative;
+                border-bottom: var(--border);
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                font-size: 15px;
+                font-weight: 500;
+                color: var(--icon-color);
+                cursor: pointer;
+                transition: 0.3s;
+
+                .filter-header {
+                    padding-bottom: 8px;
+                    width: 100%;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    &:hover {
+                        color: var(--text-color);
+                        transition: 0.3s;
+                    }
+                }
+
+                .filter-content {
+                    max-height: 0;
+                    overflow: hidden;
+                    transition: max-height 0.3s ease-out;
+                    width: 100%;
+
+                    &.show {
+                        max-height: 200px !important;
+                        transition: max-height 0.3s ease-in;
+                        padding: 0;
+                    }
+
+                    // people-range checkbox start
+
+                    .people-range-wrapper {
+                        margin: 1em 0;
+                        max-height: 150px;
+                        .custom-checkboxes {
+                            list-style: none;
+                            padding: 12px;
+                            border: var(--border);
+                            background: var(--secondary-bg);
+                            margin: 0;
+                            gap: 1em;
+                            max-height: 150px;
+                            overflow-y: scroll;
+                        }
+                    }
+
+                    // people-range checkbox end
+
+                    // status-range checkbox start
+
+                    .status-range-wrapper {
+                        margin: 1em 0;
+                        max-height: 150px;
+                        .custom-checkboxes {
+                            list-style: none;
+                            padding: 12px;
+                            border: var(--border);
+                            background: var(--secondary-bg);
+                            margin: 0;
+                            gap: 1em;
+                            max-height: 150px;
+                        }
+                    }
+
+                    // status-range checkbox end
+                }
+
+                // If you want the expanded item to take more space
+            }
+        }
+    }
+
+    footer {
+        margin-top: auto;
+        margin-bottom: 2em;
+        display: flex;
+        button {
+            padding: 18px 48px;
+            border-radius: 32px;
+            background-color: var(--button-bg);
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: 500;
+            &:hover {
+                background-color: #015861;
+                transition: 0.3s;
+            }
+        }
+    }
+}
+
+.fsidebar-container.open {
+    transform: translateX(0); // Slide the sidebar in
 }

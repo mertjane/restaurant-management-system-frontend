@@ -88,7 +88,6 @@
 
             .status-container{
                 display: flex;
-                
                 padding: 14px 0;
                 ul{
                     
@@ -110,6 +109,11 @@
                         &:hover{
                             background-color: var(--secondary-bg);
                             border-color: var(--secondary-bg);
+                        }
+
+                        &.active {
+                            background-color: #007c89;
+                            color: #fff;
                         }
                     }
                 }

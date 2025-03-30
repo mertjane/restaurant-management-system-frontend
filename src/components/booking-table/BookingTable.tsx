@@ -3,21 +3,54 @@ import { BookingContext } from "../../context/BookingContext";
 import "./booking-table.component.scss";
 import {
   CancelledIcon,
-  EditIcon,
   PendingIcon,
   SortIcon,
   SuccessIcon,
 } from "../icons/Icons";
 import { BookingModal } from "../modals/Modal";
+import { getBookingById } from "../../api/bookings";
+import Filter from "../filter/Filter";
+import { BookingTableProps } from "./BookingTable.types";
 
-const BookingTable = () => {
+const BookingTable:React.FC<BookingTableProps> = ({clearSelectedPeople}) => {
   const bookingContext = useContext(BookingContext);
   const [sortByTime, setSortByTime] = useState<string>("desc");
   const [sortByDate, setSortByDate] = useState<string>("desc");
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const [selectedBooking, setSelectedBooking] = useState<any>(null);
+  const [loadingBooking, setLoadingBooking] = useState<boolean>(false);
+  const [errorBooking, setErrorBooking] = useState<string | null>(null);
 
-  const openModal = () => setIsModalOpen(true);
-  const closeModal = () => setIsModalOpen(false);
+  const openModal = async (bookingId: number) => {
+    setIsModalOpen(true);
+    setLoadingBooking(true);
+    setErrorBooking(null);
+
+    try {
+      const bookingData = await getBookingById(bookingId);
+      setSelectedBooking(bookingData);
+    } catch (error) {
+      setErrorBooking("Failed to fetch booking details.");
+    } finally {
+      setLoadingBooking(false);
+    }
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setSelectedBooking(null);
+  };
+
+  const refreshBookings = async () => {
+    if (bookingContext) {
+      try {
+        // Refresh bookings by fetching the current page (can adjust to other logic if necessary)
+        await bookingContext.fetchBookings(1);
+      } catch (error) {
+        console.error("Error refreshing bookings:", error);
+      }
+    }
+  };
 
   const handleSortByTime = () => {
     // Toggle sort order
@@ -47,20 +80,21 @@ const BookingTable = () => {
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case "pending":
+      case "Pending":
         return <PendingIcon />; // You can change the color as per your design
-      case "confirmed":
+      case "Confirmed":
         return <SuccessIcon />;
-      case "cancelled":
+      case "Cancelled":
         return <CancelledIcon />;
       default:
-        return "black"; // Default color
+        return ""; // Default color
     }
   };
 
   return (
     <div className="booking-table">
       <h2>Bookings</h2>
+      <Filter clearSelectedPeople={clearSelectedPeople}/>
       {loading && <p>Loading bookings...</p>}
       {error && <p className="error">{error}</p>}
       {!loading && !error && bookings.length === 0 && <p>No bookings found.</p>}
@@ -107,15 +141,23 @@ const BookingTable = () => {
                 <td>{booking.customer.email}</td>
                 <td>{booking.customer.phone}</td>
                 <td>{booking.numPeople}</td>
-                <td onClick={openModal}>
-                  {getStatusColor(booking.status)} {booking.status} <EditIcon />
+                <td onClick={() => openModal(booking.id)}>
+                  {getStatusColor(booking.status)} {booking.status}
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
       )}
-      {isModalOpen && <BookingModal closeModal={closeModal} />}
+      {isModalOpen && (
+        <BookingModal
+          refreshBookings={refreshBookings}
+          closeModal={closeModal}
+          booking={selectedBooking}
+          loading={loadingBooking}
+          error={errorBooking}
+        />
+      )}
     </div>
   );
 };
