@@ -3,33 +3,40 @@ import "./Filter.styles.scss";
 import { EditIcon, FilterIcon } from "../icons/Icons";
 import { FilterProps } from "./Filter.types";
 import { FilterSidebar } from "../sidebar/Sidebar";
-import CheckedItems from "../checkedItems/checkedItems";
+import {
+  CheckedPeople,
+  CheckedStats,
+  SelectedDateRange,
+  SelectedTimeRange,
+} from "../checkedItems/CheckedItems";
 
-const Filter: React.FC<FilterProps> = () => {
+const Filter: React.FC<FilterProps> = ({
+  selectedDate,
+  selectedTime,
+  selectedPeople,
+  selectedStatus,
+  onCheckboxChange,
+  onStatsChange,
+  onTimeRangeChange,
+  onDateRangeChange,
+  clearSelectedPeople,
+  clearSelectedStatus,
+  clearSelectedTimeRange,
+  clearSelectedDateRange,
+}) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(false);
-  const [selectedPeople, setSelectedPeople] = useState<{
-    [key: string]: boolean;
-  }>({}); // State for selectedPeople
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
-  };
-
-  const handleCheckboxChange = (custName: string) => {
-    setSelectedPeople((prev) => ({
-      ...prev,
-      [custName]: !prev[custName],
-    }));
   };
 
   const selectedNames = Object.keys(selectedPeople).filter(
     (name) => selectedPeople[name]
   );
 
-  // Function to clear selected people
-  const clearSelectedPeople = () => {
-    setSelectedPeople({}); // Reset selectedPeople to an empty object
-  };
+  const selectedStats = Object.keys(selectedStatus).filter(
+    (status) => selectedStatus[status]
+  );
 
   return (
     <div className="filter-container">
@@ -37,10 +44,32 @@ const Filter: React.FC<FilterProps> = () => {
         <FilterIcon />
         <p>Filter</p>
       </div>
-      {selectedNames.length > 0 && (
-        <CheckedItems selectedPeople={selectedPeople} clearSelectedPeople={clearSelectedPeople}/>
+      {selectedDate && (
+        <SelectedDateRange
+          selectedDate={selectedDate}
+          clearSelectedDateRange={clearSelectedDateRange}
+        />
       )}
-      <div className="wrapper">
+      {selectedTime && (
+        <SelectedTimeRange
+          selectedTime={selectedTime}
+          clearSelectedTimeRange={clearSelectedTimeRange}
+        />
+      )}
+
+      {selectedStats.length > 0 && (
+        <CheckedStats
+          selectedStatus={selectedStatus}
+          clearSelectedStatus={clearSelectedStatus}
+        />
+      )}
+      {selectedNames.length > 0 && (
+        <CheckedPeople
+          selectedPeople={selectedPeople}
+          clearSelectedPeople={clearSelectedPeople}
+        />
+      )}
+      <div className="new-booking-wrapper">
         <EditIcon />
         <p>New Booking</p>
       </div>
@@ -50,10 +79,23 @@ const Filter: React.FC<FilterProps> = () => {
 
       {/* Sidebar */}
       <FilterSidebar
-        selectedPeople={selectedPeople} // Pass selectedPeople to FilterSidebar
-        onCheckboxChange={handleCheckboxChange} // Pass handleCheckboxChange function
-        isSidebarOpen={isSidebarOpen}
+        isSidebarOpen={isSidebarOpen} // open-sidebar prop
+        // Selected People props
+        selectedPeople={selectedPeople}
+        onCheckboxChange={onCheckboxChange}
         clearSelectedPeople={clearSelectedPeople}
+        // Selected Status props
+        selectedStatus={selectedStatus}
+        onStatsChange={onStatsChange}
+        clearSelectedStatus={clearSelectedStatus}
+        // Selected Time Range Props
+        selectedTime={selectedTime}
+        onTimeRangeChange={onTimeRangeChange}
+        clearSelectedTimeRange={clearSelectedTimeRange}
+        // Selected Date Range Props
+        selectedDate={selectedDate}
+        onDateRangeChange={onDateRangeChange}
+        clearSelectedDateRange={clearSelectedDateRange}
       />
     </div>
   );

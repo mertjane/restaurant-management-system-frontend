@@ -3,20 +3,16 @@ import { createRoot } from "react-dom/client";
 import "./index.scss";
 import App from "./App.tsx";
 import { AuthProvider } from "./context/AuthContext.tsx";
-import { RestaurantProvider } from "./context/RestaurantContext.tsx";
-import { CustomersProvider } from "./context/CustomersContext";
-import { BookingProvider } from "./context/BookingContext.tsx";
+
+import { Provider } from "react-redux";
+import { store } from "./redux/store";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <AuthProvider>
-      <RestaurantProvider>
-        <CustomersProvider>
-          <BookingProvider>
-            <App />
-          </BookingProvider>
-        </CustomersProvider>
-      </RestaurantProvider>
-    </AuthProvider>
+    <Provider store={store}>
+      <AuthProvider>
+        <App />
+      </AuthProvider>
+    </Provider>
   </StrictMode>
 );

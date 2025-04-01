@@ -2,21 +2,18 @@ import React, { useEffect, useState } from "react";
 import "./modal.component.scss";
 import { BookingIcon, CloseIcon, TimeIcon } from "../icons/Icons";
 import { updateBookingById } from "../../api/bookings";
+import { RootState } from "../../redux/store";
+import { useSelector } from "react-redux";
 
 interface BookingModalProps {
   closeModal: () => void;
   booking: any;
-  loading: boolean;
-  error: string | null;
-  refreshBookings: () => void;
+
 }
 
 export const BookingModal: React.FC<BookingModalProps> = ({
   closeModal,
-  booking,
-  loading,
-  error,
-  refreshBookings,
+  booking
 }) => {
   const [formData, setFormData] = useState({
     date: booking?.date || "",
@@ -24,6 +21,9 @@ export const BookingModal: React.FC<BookingModalProps> = ({
     num_people: booking?.numPeople || 0,
     status: booking?.status || "",
   });
+  const { loading, error } = useSelector(
+    (state: RootState) => state.bookings
+  );
 
   useEffect(() => {
     if (booking) {
@@ -37,7 +37,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
     }
   }, [booking]); // Re-run when `booking` changes
 
-  if (!booking) return null;
+  
 
   const handleStatusChange = (status: string) => {
     setFormData((prev) => ({
@@ -49,7 +49,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
   const handleSubmit = async () => {
     try {
       await updateBookingById(booking.id, formData);
-      refreshBookings(); // Refresh booking list after update
+      /* refreshBookings(); // Refresh booking list after update */
       closeModal();
     } catch (err) {
       console.error("Error updating booking:", err);

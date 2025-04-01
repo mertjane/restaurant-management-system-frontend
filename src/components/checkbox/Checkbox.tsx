@@ -1,39 +1,72 @@
 import React, { useContext, useEffect } from "react";
 import "./checkbox.styles.scss";
-import { BookingContext } from "../../context/BookingContext";
-import { checkboxProps } from "./checkbox.types";
 
-export const PeopleCheckbox: React.FC<checkboxProps> = ({
+import {
+  PeopleCheckboxProps,
+  SelectedTimeRangeProps,
+  StatusCheckboxProps,
+} from "./checkbox.types";
+import { TimeIcon } from "../icons/Icons";
+
+export const PeopleCheckbox: React.FC<PeopleCheckboxProps> = ({
   selectedPeople,
-  onCheckboxChange
+  onCheckboxChange,
 }) => {
-  const bookingContext = useContext(BookingContext);
+  
 
-  // Handle the case where bookingContext is null
-  if (!bookingContext) {
-    return <p>Loading customers...</p>;
-  }
-
-  const { bookings } = bookingContext;
+  
 
   // Log the updated state correctly after it changes
   useEffect(() => {
     console.log("Updated selectedPeople:", selectedPeople);
   }, [selectedPeople]); // Runs whenever selectedPeople changes
+
+  const handleChange = (selectedPeople: string) => {
+    onCheckboxChange(selectedPeople); // Now only passing a string
+  };
+
   return (
     <>
-      {bookings.map((b) => (
-        <li key={b.customer.name}>
-          <label htmlFor={`person-${b.customer.name}`}>
+      <li>
+        <label htmlFor="person">
+          <input
+            type="checkbox"
+            name="person"
+            id="person"
+            /* checked={!!selectedPeople[b.customer.name]} */
+          />
+          <span className="custom-checkbox"></span>
+          <span className="label-text"></span>
+        </label>
+      </li>
+    </>
+  );
+};
+
+export const StatusCheckbox: React.FC<StatusCheckboxProps> = ({
+  selectedStatus,
+  onStatsChange,
+}) => {
+  const statusOptions = ["Pending", "Cancelled", "Confirmed"];
+
+  const handleChange = (status: string) => {
+    onStatsChange(status); // Now only passing a string
+  };
+
+  return (
+    <>
+      {statusOptions.map((s) => (
+        <li key={s}>
+          <label htmlFor={`status-${s}`}>
             <input
               type="checkbox"
-              name={`person-${b.customer.name}`}
-              id={`person-${b.customer.name}`}
-              checked={!!selectedPeople[b.customer.name]}
-              onChange={() => onCheckboxChange(b.customer.name)}
+              name={`status-${s}`}
+              id={`status-${s}`}
+              checked={!!selectedStatus[s]} // Ensure boolean value
+              onChange={() => handleChange(s)}
             />
             <span className="custom-checkbox"></span>
-            <span className="label-text">{b.customer.name}</span>
+            <span className="label-text">{s}</span>
           </label>
         </li>
       ))}
@@ -41,35 +74,47 @@ export const PeopleCheckbox: React.FC<checkboxProps> = ({
   );
 };
 
-export const StatusCheckbox = () => {
+export const TimeRangePicker: React.FC<SelectedTimeRangeProps> = ({
+  selectedTime,
+  onTimeRangeChange,
+}) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    onTimeRangeChange(name, value); // Call the prop function with updated time values
+  };
+
   return (
-    <>
-      <li>
-        <label htmlFor="pending">
-          <input type="checkbox" name="pending" id="pending" />
-          <span className="custom-checkbox"></span>
-          <span className="label-text">Pending</span>
-        </label>
-      </li>
-      <li>
-        <label htmlFor="confirmed">
-          <input type="checkbox" name="confirmed" id="confirmed" />
-          <span className="custom-checkbox"></span>
-          <span className="label-text">Confirmed</span>
-        </label>
-      </li>
-      <li>
-        <label htmlFor="cancelled">
-          <input type="checkbox" name="cancelled" id="cancelled" />
-          <span className="custom-checkbox"></span>
-          <span className="label-text">Cancelled</span>
-        </label>
-      </li>
-    </>
+    <div className="time-range-picker" onClick={(e) => e.stopPropagation()}>
+      <label>
+        Start Time
+        <input
+          type="time"
+          name="startTime"
+          value={selectedTime.startTime}
+          onChange={handleChange}
+        />
+        <span className="date-icon">
+          <TimeIcon />
+        </span>
+      </label>
+      <label>
+        End Time
+        <input
+          type="time"
+          name="endTime"
+          value={selectedTime.endTime}
+          onChange={handleChange}
+        />
+        <span className="date-icon">
+          <TimeIcon />
+        </span>
+      </label>
+    </div>
   );
 };
 
 export default {
   StatusCheckbox,
   PeopleCheckbox,
+  TimeRangePicker,
 };

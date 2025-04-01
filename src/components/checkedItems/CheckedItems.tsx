@@ -1,8 +1,16 @@
 import React from "react";
 import "./checkedItems.styles.scss";
-import { checkedItemsProps } from "./checkedItems.types";
+import {
+  checkedItemsProps,
+  CheckedStatsProps,
+  SelectedDateProps,
+  SelectedTimeProps,
+} from "./checkedItems.types";
 
-const CheckedItems: React.FC<checkedItemsProps> = ({ selectedPeople, clearSelectedPeople}) => {
+export const CheckedPeople: React.FC<checkedItemsProps> = ({
+  selectedPeople,
+  clearSelectedPeople,
+}) => {
   // Filter out names of selected people
   const selectedNames = Object.keys(selectedPeople).filter(
     (name) => selectedPeople[name]
@@ -29,4 +37,74 @@ const CheckedItems: React.FC<checkedItemsProps> = ({ selectedPeople, clearSelect
   );
 };
 
-export default CheckedItems;
+export const CheckedStats: React.FC<CheckedStatsProps> = ({
+  selectedStatus,
+  clearSelectedStatus,
+}) => {
+  // Filter out names of selected people
+  const selectedStats = Object.keys(selectedStatus).filter(
+    (status) => selectedStatus[status]
+  );
+
+  const statusString = selectedStats.join(", ");
+
+  return (
+    <div className="checked-items-wrapper">
+      <ul>{selectedStats.length > 0 ? <li>{statusString}</li> : <li></li>}</ul>
+      <span onClick={clearSelectedStatus}>Clear all</span>
+    </div>
+  );
+};
+
+export const SelectedTimeRange: React.FC<SelectedTimeProps> = ({
+  selectedTime,
+  clearSelectedTimeRange,
+}) => {
+  const { startTime, endTime } = selectedTime;
+  const showClearButton = startTime && endTime;
+
+  return (
+    <div className="selected-time-wrapper">
+      {showClearButton && (
+        <ul>
+          <li>
+            {startTime} - {endTime}
+          </li>
+        </ul>
+      )}
+      {showClearButton && (
+        <span onClick={clearSelectedTimeRange}>Clear all</span>
+      )}
+    </div>
+  );
+};
+
+export const SelectedDateRange: React.FC<SelectedDateProps> = ({
+  selectedDate,
+  clearSelectedDateRange
+}) => {
+  const {startDate, endDate} = selectedDate;
+  const showClearButton = startDate && endDate;
+
+  return (
+    <div className="selected-date-wrapper">
+      {showClearButton && (
+        <ul>
+          <li>
+            {startDate} - {endDate}
+          </li>
+        </ul>
+      )}
+      {showClearButton && (
+        <span onClick={clearSelectedDateRange}>Clear All</span>
+      )}
+    </div>
+  )
+}
+
+export default {
+  CheckedPeople,
+  CheckedStats,
+  SelectedTimeRange,
+  SelectedDateRange
+};

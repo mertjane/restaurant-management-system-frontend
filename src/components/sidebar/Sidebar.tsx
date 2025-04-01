@@ -10,16 +10,31 @@ import {
   SettingIcon,
 } from "../icons/Icons";
 import { Link } from "react-router-dom";
-import { useContext, useEffect, useState } from "react";
-import { RestaurantContext } from "../../context/RestaurantContext";
-import { PeopleCheckbox, StatusCheckbox } from "../checkbox/Checkbox";
+import { useEffect, useState } from "react";
+
+import {
+  PeopleCheckbox,
+  StatusCheckbox,
+  TimeRangePicker,
+} from "../checkbox/Checkbox";
 import { sidebarProps } from "./sidebarProps";
-
-
+import DateRangePicker from "../dateRangePicker/DateRangePicker";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch } from "../../redux/store";
+import { RootState } from "../../redux/store";
+import { getRestaurant } from "../../api/restaurant";
 
 export const DashboardSidebar: React.FC = () => {
   const [activeItem, setActiveItem] = useState<string>("dashboard");
-  const { restaurants } = useContext(RestaurantContext);
+  const dispatch = useDispatch<AppDispatch>();
+  const { name, loading } = useSelector((state: RootState) => state.restaurant);
+  const { user } = useSelector((state: RootState) => state.auth);
+
+  useEffect(() => {
+    if (user?.id) {
+      dispatch(getRestaurant(user.id));
+    }
+  }, [dispatch, user?.id]);
 
   // Load the active item from localStorage on mount
   useEffect(() => {
@@ -38,7 +53,7 @@ export const DashboardSidebar: React.FC = () => {
   return (
     <div className="sidebar-container">
       <header className="sidebar-header">
-        <h3>{restaurants?.[0]?.name}</h3>
+        {loading ? <h3>Loading...</h3> : <h3>{name || "No Restaurant"}</h3>}
       </header>
       <nav>
         <ul className="sidebar-list">
@@ -97,9 +112,14 @@ export const DashboardSidebar: React.FC = () => {
 
 export const FilterSidebar: React.FC<sidebarProps> = ({
   isSidebarOpen,
+  selectedDate,
+  selectedTime,
   selectedPeople,
+  selectedStatus,
   onCheckboxChange,
-  clearSelectedPeople
+  onStatsChange,
+  onTimeRangeChange,
+  onDateRangeChange,
 }) => {
   const [expandFilter, setExpandFilter] = useState<string | null>(null);
 
@@ -132,14 +152,19 @@ export const FilterSidebar: React.FC<sidebarProps> = ({
               >
                 {filter === "Date" && (
                   <div className="date-range-wrapper">
-                    <p>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Quas repellendus quis ex?
-                    </p>
+                    <DateRangePicker
+                      selectedDate={selectedDate}
+                      onDateRangeChange={onDateRangeChange}
+                    />
                   </div>
                 )}
                 {filter === "Time" && (
-                  <div className="time-range-wrapper">Time Picker</div>
+                  <div className="time-range-wrapper">
+                    <TimeRangePicker
+                      selectedTime={selectedTime}
+                      onTimeRangeChange={onTimeRangeChange}
+                    />
+                  </div>
                 )}
                 {filter === "People" && (
                   <div className="people-range-wrapper">
@@ -147,7 +172,6 @@ export const FilterSidebar: React.FC<sidebarProps> = ({
                       <PeopleCheckbox
                         selectedPeople={selectedPeople}
                         onCheckboxChange={onCheckboxChange}
-                        clearSelectedPeople={clearSelectedPeople}
                       />
                     </ul>
                   </div>
@@ -155,7 +179,10 @@ export const FilterSidebar: React.FC<sidebarProps> = ({
                 {filter === "Status" && (
                   <div className="status-range-wrapper">
                     <ul className="custom-checkboxes">
-                      <StatusCheckbox />
+                      <StatusCheckbox
+                        selectedStatus={selectedStatus}
+                        onStatsChange={onStatsChange}
+                      />
                     </ul>
                   </div>
                 )}

@@ -591,7 +591,7 @@ export const SettingIcon = () => {
   );
 };
 
-export const SortIcon = ({ onClick }: { onClick: () => void }) => {
+export const SortIcon = () => {
   return (
     <svg
       width={12}
@@ -601,7 +601,7 @@ export const SortIcon = ({ onClick }: { onClick: () => void }) => {
       xmlns="http://www.w3.org/2000/svg"
       stroke="#323232"
       strokeWidth="0.00024000000000000003"
-      onClick={onClick} // Add onClick handler
+      
     >
       <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
       <g

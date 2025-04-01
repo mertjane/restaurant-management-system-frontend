@@ -1,6 +1,7 @@
-.checked-items-wrapper {
-  position: absolute;
-  left: 10%;
+.checked-items-wrapper,
+.selected-time-wrapper,
+.selected-date-wrapper {
+  margin-left: 1em;
   display: flex;
   align-items: center;
   gap: 6px;
@@ -19,14 +20,14 @@
     }
   }
 
-  span{
+  span {
     font-size: 13px;
     color: var(--icon-color);
     cursor: pointer;
-    transition: .3s;
-    &:hover{
+    transition: 0.3s;
+    &:hover {
       color: var(--text-color);
-      transition: .3s;
+      transition: 0.3s;
     }
   }
 }

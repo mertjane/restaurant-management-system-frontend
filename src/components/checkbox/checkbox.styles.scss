@@ -1,66 +1,110 @@
 li {
-  padding: 0;
-  margin: 0;
-  label {
-      display: flex;
-      align-items: center;
-      cursor: pointer;
-      position: relative;
-      padding-left: 20px;
-      .label-text {
-          margin-left: 10px;
-          color: var(--text-color);
-          position: relative;
-          bottom: 3.5px;
-      }
+    padding: 0;
+    margin: 0;
+    label {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        position: relative;
+        padding-left: 20px;
+        .label-text {
+            margin-left: 10px;
+            color: var(--text-color);
+            position: relative;
+            bottom: 3.5px;
+        }
 
-      input[type="checkbox"] {
-          position: absolute;
-          opacity: 0;
-          cursor: pointer;
-          height: 0;
-          width: 0;
+        input[type="checkbox"] {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+            height: 0;
+            width: 0;
 
-          &:checked ~ .custom-checkbox {
-              background-color: var(--button-bg);
-              border-color: var(--button-bg); // Important to match border color
+            &:checked ~ .custom-checkbox {
+                background-color: var(--button-bg);
+                border-color: var(--button-bg); // Important to match border color
 
-              &::after {
-                  display: block;
-                  border-color: white; // Ensure contrast
-              }
-          }
-      }
+                &::after {
+                    display: block;
+                    border-color: white; // Ensure contrast
+                }
+            }
+        }
 
-      .custom-checkbox {
-          position: absolute;
-          top: 0;
-          left: 0;
-          height: 16px;
-          width: 16px;
-          background-color: transparent;
-          border: 2px solid var(--icon-color);
-          border-radius: 4px;
-          transition: all 0.2s ease;
+        .custom-checkbox {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 16px;
+            width: 16px;
+            background-color: transparent;
+            border: 2px solid var(--icon-color);
+            border-radius: 4px;
+            transition: all 0.2s ease;
 
-          &::after {
-              content: "";
-              position: absolute;
-              display: none;
-              left: 3px;
-              top: -1px;
-              width: 5px;
-              height: 9px;
-              border: solid white; // Explicit white color
-              border-width: 0 2px 2px 0;
-              transform: rotate(45deg);
-          }
-      }
+            &::after {
+                content: "";
+                position: absolute;
+                display: none;
+                left: 3px;
+                top: -1px;
+                width: 5px;
+                height: 9px;
+                border: solid white; // Explicit white color
+                border-width: 0 2px 2px 0;
+                transform: rotate(45deg);
+            }
+        }
 
-      &:hover {
-          .custom-checkbox {
-              border-color: var(--button-bg);
-          }
-      }
-  }
+        &:hover {
+            .custom-checkbox {
+                border-color: var(--button-bg);
+            }
+        }
+    }
+}
+
+// date picker
+.time-range-picker {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    label {
+        color: var(--text-color);
+        font-size: 13px;
+        flex: 1;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        position: relative;
+        input {
+            width: 100%;
+            margin-top: 6px;
+            border: var(--border);
+            transition: 0.3s;
+            font-size: 17px;
+            background: var(--bg-color);
+            color: var(--text-color);
+            &:focus {
+                outline: none;
+                border: 1px solid #007c89;
+                box-shadow: inset 0 0 0 1px #007c89;
+                transition: 0.3s;
+            }
+
+            &::-webkit-calendar-picker-indicator {
+                opacity: 0;
+            }
+        }
+        .date-icon {
+            position: absolute;
+            pointer-events: none;
+            color: var(--icon-color); // Customize this color
+            bottom: 6px;
+            right: 8px;
+            
+        }
+    }
 }

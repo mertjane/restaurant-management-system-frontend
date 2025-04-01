@@ -18,7 +18,7 @@ export interface User {
     resetToken: string | null;
     createdAt: string;
     updatedAt: string;
-} 
+}
 
 //** FORGOT PASSWORD TYPES **//
 
@@ -50,7 +50,16 @@ export interface PasswordResetResponse {
 export interface Restaurant {
     id: number;
     name: string;
-    website_url: string;
+    websiteUrl: string;
+    user_id: number;
+    user?: {  // Marking user as optional
+        id: number;
+        email: string;
+        resetToken: string | null;
+        createdAt: string;
+        updatedAt: string;
+    };
+
 }
 
 // CUSTOMER DETAILS 
@@ -58,14 +67,15 @@ export interface Customer {
     id: number;
     name: string;
     email: string;
-    phone: string;
+    phone: number;
+    restaurant_id: number;
 }
 
 export interface CustomerResponse {
     content: Customer[];
     totalPages: number;
 }
-  
+
 
 // BOOKING TYPES //
 export interface Bookings {
@@ -74,7 +84,7 @@ export interface Bookings {
     time: string;
     numPeople: number;
     status: string;
-    customer: {
+    customer?: {
         customer_id: number;
         name: string;
         email: string;
@@ -87,5 +97,9 @@ export interface BookingsResponse {
     content: Bookings[];
     totalPages: number;
 }
+
+
+
+
 
 

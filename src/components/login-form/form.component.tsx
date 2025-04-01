@@ -1,22 +1,22 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 
 import "./form.component.scss";
 import RememberMeComponent from "../remember-me/remember-me.component";
-import { AuthContext } from "../../context/AuthContext";
 import { loginUser } from "../../api/auth";
 import { ErrorIcon, PwdHideIcon, PwdShowIcon } from "../icons/Icons";
 import { ButtonLoader, Spinner } from "../loader/loader.component";
 import ForgotPassword from "../forgot-pwd-form/forgot-pwd.component";
 import EmailSuccess from "../email-sent-success/EmailSuccess.component";
 import ChangePwd from "../change-pwd/ChangePwd.component";
+import { RootState } from "../../redux/store";
 
 const LoginForm: React.FC = () => {
-  const authContext = useContext(AuthContext);
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState<string>("");
   const [resetEmail, setResetEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState<string | null>(null);
+  const [password, setPassword] = useState<string>("");
+
   const [isSubmit, setIsSubmit] = useState<boolean>(false);
   const [showPwd, setShowPwd] = useState<boolean>(false);
   const [form, setForm] = useState<
@@ -24,6 +24,9 @@ const LoginForm: React.FC = () => {
   >("login");
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const location = useLocation();
+  const dispatch = useDispatch<any>();
+
+  const { error } = useSelector((state: RootState) => state.auth);
 
   // Check URL for token and switch form to "change-pwd"
   useEffect(() => {
@@ -48,32 +51,16 @@ const LoginForm: React.FC = () => {
     }, 2500);
   };
 
-  if (!authContext) {
-    return <div>Error: Auth context is missing</div>;
-  }
-
-  const { login } = authContext;
-
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setError(null);
-    setIsSubmit(true);
-
-    try {
-      const response = await loginUser({ email, password });
-
-      // Store token and user info
-      login(response.token, response.user);
-      
-
-      window.location.href = "/dashboard"; // Redirect after login
-    } catch (err: any) {
-      setError(err.message);
-    } finally {
-      // Wait for at least 2 seconds before hiding the loader
+    if (email && password) {
+      setIsLoading(true);
+      setIsSubmit(true);
       setTimeout(() => {
-        setIsSubmit(false); // Reset submit state after 2 seconds
-      }, 2000); // 2000 ms = 2 seconds
+        dispatch(loginUser({ email, password }));
+        setIsLoading(false);
+        setIsSubmit(false);
+      }, 3000);
     }
   };
 

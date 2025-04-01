@@ -14,8 +14,6 @@ const Pagination: React.FC<PaginationProps> = ({
 }) => {
   const pages = [...Array(totalPages).keys()].map((page) => page + 1);
 
- 
-
   return (
     <div className="pagination-container">
       {pages.map((page) => (

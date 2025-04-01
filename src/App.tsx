@@ -20,18 +20,14 @@ function App() {
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/login" element={<Login />} />
-          <Route
-            path="/dashboard"
-            element={
-              <ProtectedRoute>
-                <Dashboard />
-              </ProtectedRoute>
-            }
-          >
-            {/* Nested Route inside Dashboard */}
-            <Route path="customers" element={<Customers />} />
-            <Route path="bookings" element={<Bookings />} />
-            <Route path="menu" element={<MenuComponent />} />
+
+          {/* Protected Route for Authenticated Users */}
+          <Route element={<ProtectedRoute />}>
+            <Route path="/dashboard" element={<Dashboard />}>
+              <Route path="customers" element={<Customers />} />
+              <Route path="bookings" element={<Bookings />} />
+              <Route path="menu" element={<MenuComponent />} />
+            </Route>
           </Route>
         </Routes>
       </Router>

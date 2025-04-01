@@ -1,6 +1,6 @@
 .profiledown {
     position: absolute;
-    right: 23px;
+    right: 20px;
     top: 65px;
     width: auto;
     background-color: var(--bg-color);
@@ -9,7 +9,7 @@
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
     width: 175px;
     height: 150px;
-    z-index: 1002;
+    z-index: 10000;
     .arrow {
         position: absolute;
         top: -8px;
@@ -51,7 +51,7 @@
 
 .notifdown {
     position: absolute;
-    right: 120px;
+    right: 112px;
     top: 65px;
     width: auto;
     background-color: var(--bg-color);
@@ -60,7 +60,7 @@
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
     width: 350px;
     min-height: 250px;
-    z-index: 1002;
+    z-index: 10000;
     header {
         padding: 10px;
         display: flex;

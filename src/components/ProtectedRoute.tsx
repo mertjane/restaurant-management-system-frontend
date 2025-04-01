@@ -1,10 +1,11 @@
-import React, { useContext } from "react";
-import { Navigate } from "react-router-dom";
-import { AuthContext } from "../context/AuthContext";
+import { Navigate, Outlet } from "react-router-dom";
 
-const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const authContext = useContext(AuthContext);
-  return authContext?.token ? <>{children}</> : <Navigate to="/login" />;
+import { useSelector } from "react-redux";
+import { RootState } from "../redux/store";
+
+const ProtectedRoute = () => {
+  const token = useSelector((state: RootState) => state.auth.token) || localStorage.getItem("token");
+  return token ? <Outlet /> : <Navigate to="/login" replace />;
 };
 
 export default ProtectedRoute;

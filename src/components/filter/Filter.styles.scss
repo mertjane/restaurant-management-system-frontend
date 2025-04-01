@@ -3,10 +3,10 @@
   margin: 0 0 14px 0;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   position: relative;
-  
-  .wrapper {
+
+  .wrapper{
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -26,6 +26,34 @@
     p {
       font-size: 14px;
       font-weight: 500;
+    }
+  }
+  .new-booking-wrapper {
+    position: absolute;
+    z-index: 1005;
+    right: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 4px 14px;
+    width: max-content;
+    height: max-content;
+    border-radius: 5px;
+    border: var(--border);
+    color: var(--icon-color);
+    cursor: pointer;
+    &:hover {
+      background-color: var(--secondary-bg);
+      transition: 0.3s;
+      border-color: var(--secondary-bg);
+    }
+    p {
+      font-size: 14px;
+      font-weight: 500;
+      position: relative;
+      top: 6.5px;
     }
   }
 }

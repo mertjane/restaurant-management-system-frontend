@@ -1,5 +1,17 @@
-export interface checkboxProps {
+export interface PeopleCheckboxProps {
     selectedPeople: { [key: string]: boolean }; 
     onCheckboxChange: (custName: string) => void; 
-    clearSelectedPeople: {}
+}
+
+export interface StatusCheckboxProps {
+    selectedStatus: { [key: string]: boolean }; 
+    onStatsChange: (status: string) => void; 
+}
+
+export interface SelectedTimeRangeProps {
+    selectedTime: {
+        startTime: string;
+        endTime: string;
+      };
+    onTimeRangeChange: (startTime: string, endTime: string) => void;
 }
