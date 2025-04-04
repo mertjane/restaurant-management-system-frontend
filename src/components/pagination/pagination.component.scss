@@ -4,7 +4,9 @@
     align-items: center;
     gap: 8px;
     margin-top: 20px;
-  
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
     .page-btn {
       padding: 8px 10px;
       border: none;
@@ -13,22 +15,21 @@
       font-size: 14px;
       border-radius: 5px;
       transition: all 0.3s ease-in-out;
-  
+
       &:hover {
         background-color: #006239;
         color: white;
       }
-  
+
       &.active {
         background-color: #006239;
         color: white;
         font-weight: 400;
       }
-  
+
       &:disabled {
         background-color: #ccc;
         cursor: not-allowed;
       }
     }
   }
-  

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useEffect } from "react";
 import "./checkbox.styles.scss";
 
 import {
@@ -7,14 +7,14 @@ import {
   StatusCheckboxProps,
 } from "./checkbox.types";
 import { TimeIcon } from "../icons/Icons";
+import { useSelector } from "react-redux";
+import { RootState } from "../../redux/store";
 
 export const PeopleCheckbox: React.FC<PeopleCheckboxProps> = ({
   selectedPeople,
   onCheckboxChange,
 }) => {
-  
-
-  
+  const { content } = useSelector((state: RootState) => state.bookings);
 
   // Log the updated state correctly after it changes
   useEffect(() => {
@@ -27,18 +27,25 @@ export const PeopleCheckbox: React.FC<PeopleCheckboxProps> = ({
 
   return (
     <>
-      <li>
-        <label htmlFor="person">
-          <input
-            type="checkbox"
-            name="person"
-            id="person"
-            /* checked={!!selectedPeople[b.customer.name]} */
-          />
-          <span className="custom-checkbox"></span>
-          <span className="label-text"></span>
-        </label>
-      </li>
+      {content.map((c) => {
+        const customerName = c.customer?.name;
+        if (!customerName) return null; // Skip rendering if no customer name
+
+        return (
+          <li key={c.customer?.id}>
+            <label htmlFor={`person-${customerName}`}>
+              <input
+                type="checkbox"
+                id={`person-${customerName}`}
+                checked={!!selectedPeople[customerName]}
+                onChange={() => handleChange(customerName)}
+              />
+              <span className="custom-checkbox"></span>
+              <span className="label-text">{customerName}</span>
+            </label>
+          </li>
+        );
+      })}
     </>
   );
 };

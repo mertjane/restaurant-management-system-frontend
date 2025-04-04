@@ -4,10 +4,12 @@ import {
   LigthTheme,
   NotificationIcon,
   ProfileIcon,
+  SidebarOpenIcon,
   SidebarToggle,
 } from "../icons/Icons";
 import "./Header.scss";
 import { NotificationDropdown, ProfileDropdown } from "../dropdown/Dropdown";
+import SearchBar from "../searchBar/searchBar";
 
 interface DashboardHeaderProps {
   openSidebar: boolean;
@@ -59,8 +61,9 @@ export const DashboardHeader: React.FC<DashboardHeaderProps> = ({
   return (
     <header className={`dashboard-header ${openSidebar ? "open" : "closed"}`}>
       <div onClick={toggleSidebar} className="toggle-btn">
-        <SidebarToggle />
+        <SidebarOpenIcon />
       </div>
+      <SearchBar />
       <div className="control-unit">
         <ul>
           <li

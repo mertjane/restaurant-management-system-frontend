@@ -62,7 +62,7 @@ export interface Restaurant {
 
 }
 
-// CUSTOMER DETAILS 
+// CUSTOMER DETAILS
 export interface Customer {
     id: number;
     name: string;
@@ -80,16 +80,27 @@ export interface CustomerResponse {
 // BOOKING TYPES //
 export interface Bookings {
     id: number;
-    date: Date;
+    date?: string;
     time: string;
     numPeople: number;
     status: string;
     customer?: {
-        customer_id: number;
+        id: number;
         name: string;
         email: string;
         phone: string;
     }
+
+}
+
+export interface UpdateBookingPayload {
+    id: number;
+    updatedData: {
+        date?: string;
+        time?: string;
+        num_people?: number;
+        status?: string;
+    };
 
 }
 

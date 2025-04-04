@@ -30,6 +30,8 @@
     }
 }
 
+
+// Dashboard Header
 .dashboard-header {
     max-height: 70px;
     border-bottom: var(--border);
@@ -41,6 +43,7 @@
     position: relative;
     transition: margin-left 0.3s ease-in-out;
     background-color: var(--header-bg);
+    position: relative;
     &.open {
         margin-left: 0;
     }

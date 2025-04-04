@@ -167,8 +167,6 @@
 }
 
 ul .icon-down {
-    
-    
     path {
         fill: var(--icon-color);
         transition: 0.3s;
@@ -189,5 +187,20 @@ li:hover .icon-down path {
 .filter-icon {
     path {
         fill: var(--icon-color);
+    }
+}
+
+.search-icon {
+    position: absolute;
+    left: 14px;
+    path {
+        fill: var(--icon-color);
+    }
+}
+
+
+.sidebar-open-icon{
+    path {
+        stroke: var(--icon-color);
     }
 }

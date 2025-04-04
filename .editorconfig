@@ -1,0 +1,30 @@
+# EditorConfig helps maintain consistent coding styles across editors
+# See: https://EditorConfig.org
+
+# This is the top-level config file
+root = true
+
+# Default settings for all files
+[*]
+indent_style = space          # Use spaces instead of tabs
+indent_size = 4              # 4 spaces per indent
+end_of_line = lf              # Unix-style line endings (LF)
+charset = utf-8               # UTF-8 encoding
+trim_trailing_whitespace = true  # Remove trailing spaces
+insert_final_newline = true   # Ensure a newline at file end
+
+# Markdown files: don’t trim trailing whitespace (common for readability)
+[*.md]
+trim_trailing_whitespace = false
+
+# JavaScript/TypeScript files: explicitly set 4-space indent
+[*.{js,jsx,ts,tsx}]
+indent_size = 4
+
+# Python files: often use 4 spaces (PEP 8 standard)
+[*.py]
+indent_size = 4
+
+# JSON/YAML: 2 spaces are common
+[*.{json,yml,yaml}]
+indent_size = 2

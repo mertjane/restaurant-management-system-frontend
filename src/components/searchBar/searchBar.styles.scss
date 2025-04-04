@@ -1,0 +1,31 @@
+.search-container {
+  position: absolute;
+  left: 6em;
+  .search-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    input {
+      width: 320px;
+      padding: 12px 12px 12px 40px;
+      border-radius: 20px;
+      background-color: var(--bg-color);
+      border: var(--border);
+      font-weight: 500;
+      color: var(--text-color);
+      transition: border 0.3s ease-in-out;
+      &::placeholder{
+        transition: 0.3s;
+      }
+      &:focus {
+        outline: none;
+        border: 1px solid #007c89;
+        box-shadow: inset 0 0 0 1px #007c89;
+        &::placeholder{
+          opacity: 0;
+          transition: .5s;
+        }
+      }
+    }
+  }
+}

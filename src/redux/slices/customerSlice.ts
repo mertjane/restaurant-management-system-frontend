@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { getCustomers } from "../../api/customers";
+import { getCustomers, searchCustomers } from "../../api/customers";
 import { Customer, CustomerResponse } from "../../api/types";
 
 
@@ -43,7 +43,22 @@ export const customerSlice = createSlice({
             .addCase(getCustomers.rejected, (state, action) => {
                 state.loading = false;
                 state.error = action.error.message || "Failed to fetch customers";
-            });
+            })
+        builder
+            // Search
+            .addCase(searchCustomers.pending, (state) => {
+                state.loading = true;
+                state.error = null;
+            })
+            .addCase(searchCustomers.fulfilled, (state, action) => {
+                state.content = action.payload.content;
+                state.totalPages = action.payload.totalPages;
+                state.loading = false;
+            })
+            .addCase(searchCustomers.rejected, (state, action) => {
+                state.loading = false;
+                state.error = action.payload as string;
+            })
     },
 
 })
