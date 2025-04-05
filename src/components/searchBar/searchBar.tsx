@@ -5,7 +5,7 @@ import { SearchIcon } from "../icons/Icons";
 import { useBookingSearch } from "../../hooks/useBookingSearch";
 import { useCustomer } from "../../hooks/useCustomer";
 
-const SearchBar: React.FC<searchBarProps> = ({ placeholder = "Search..." }) => {
+const SearchBar: React.FC<searchBarProps> = ({ placeholder = "Search..."}) => {
     const {
         searchInput: bookingSearchInput,
         handleInputChange: handleBookingInputChange,

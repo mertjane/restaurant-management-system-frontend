@@ -10,7 +10,6 @@
     justify-content: flex-start;
     position: relative;
     .navigation {
-        
         padding: 0;
         margin: 0;
         display: flex;
@@ -23,9 +22,9 @@
             font-size: 22px;
         }
     }
-    
 
-    
+
+
     table {
         width: 100%;
         border-collapse: collapse;
@@ -42,7 +41,6 @@
             font-weight: 500;
             display: flex;
             position: relative;
-            cursor: pointer;
             text-transform: capitalize;
         }
 
@@ -55,6 +53,7 @@
 
         tr:hover {
             background: var(--secondary-bg);
+            cursor: pointer;
         }
 
         tbody tr:last-child td {

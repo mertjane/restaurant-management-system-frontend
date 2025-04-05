@@ -23,6 +23,7 @@ const Filter: React.FC<FilterProps> = ({
   clearSelectedStatus,
   clearSelectedTimeRange,
   clearSelectedDateRange,
+  onNewBookingClick,
 }) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(false);
 
@@ -69,7 +70,7 @@ const Filter: React.FC<FilterProps> = ({
           clearSelectedPeople={clearSelectedPeople}
         />
       )}
-      <div className="new-booking-wrapper">
+      <div className="new-booking-wrapper" onClick={onNewBookingClick}>
         <EditIcon />
         <p>New Booking</p>
       </div>

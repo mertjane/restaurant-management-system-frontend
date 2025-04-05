@@ -19,3 +19,15 @@ export const getRestaurant = createAsyncThunk(
     }
   }
 )
+
+export const fetchRestaurant = async (userId: number) => {
+  try {
+    const response = await axios.get<Restaurant[]>(
+      `${import.meta.env.VITE_API_URL}/restaurant/user/${userId}`, {
+      headers: { "Content-Type": "application/json" }
+    });
+    return response.data;
+  } catch (error: any) {
+    throw new Error(error.response?.data?.message || "Something went wrong. Cannot get restaurant details.")
+  }
+}

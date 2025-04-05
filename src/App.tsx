@@ -7,6 +7,7 @@ import { useState } from "react";
 import Customers from "./pages/customers/Customers";
 import Bookings from "./pages/bookings/Bookings";
 import MenuComponent from "./pages/menu/MenuComponent";
+import { ROUTES } from "./routes/routes";
 
 function App() {
   const [form, setForm] = useState<
@@ -14,16 +15,16 @@ function App() {
   >("login");
 
   console.log("App form state:", form);
+
   return (
     <div className="container">
       <Router>
         <Routes>
-          <Route path="/" element={<Login />} />
-          <Route path="/login" element={<Login />} />
+          <Route path={ROUTES.ROOT} element={<Login />} />
+          <Route path={ROUTES.LOGIN} element={<Login />} />
 
-          {/* Protected Route for Authenticated Users */}
           <Route element={<ProtectedRoute />}>
-            <Route path="/dashboard" element={<Dashboard />}>
+            <Route path={ROUTES.DASHBOARD} element={<Dashboard />}>
               <Route path="customers" element={<Customers />} />
               <Route path="bookings" element={<Bookings />} />
               <Route path="menu" element={<MenuComponent />} />

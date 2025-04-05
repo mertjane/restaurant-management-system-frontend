@@ -40,7 +40,7 @@ const Table: React.FC = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {Array.isArray(content) &&
+                        {
                             content.map((customer) => (
                                 <tr key={customer.id}>
                                     <td>{customer.id}</td>
