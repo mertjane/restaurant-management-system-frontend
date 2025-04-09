@@ -1,0 +1,26 @@
+.login-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 14px;
+  background-image: url("../../assets/images/bg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  .layer {
+    margin: 4em 0;
+    height: 470px;
+    width: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #fff;
+    box-shadow:
+      rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
+      rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+    border-radius: 8px;
+    position: absolute;
+    box-sizing: content-box;
+  }
+}

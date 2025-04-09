@@ -1,0 +1,167 @@
+.bookings-container {
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 1.5em;
+  .analytics-header {
+    height: 150px;
+    background-color: #fff;
+    border-radius: 40px;
+    padding: 10px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    box-shadow:
+      rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
+      rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+  }
+
+  .bookings-body {
+    background-color: #fff;
+    /* min-height: calc(130vh - 200px); */
+    min-height: auto;
+    border-radius: 40px;
+    box-shadow:
+      rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
+      rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+    padding: 32px;
+    .bookings-body-hd {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      grid-template-rows: 1fr;
+      grid-column-gap: 0px;
+      grid-row-gap: 0px;
+      h2 {
+        grid-area: 1 / 1 / 2 / 2;
+      }
+      .navigation {
+        display: flex;
+        align-items: center;
+        grid-area: 1 / 5 / 2 / 5;
+        position: relative;
+        margin-right: 1em;
+        input {
+          margin: 0;
+          background: #f7f8fe;
+          min-width: 250px;
+          border: none;
+          outline: none;
+          padding: 8px 8px 8px 36px;
+          font-size: 15px;
+          border-radius: 10px;
+          &:focus::placeholder {
+            opacity: 0;
+            transition: 0.3s ease-in-out;
+          }
+        }
+      }
+
+      .sort-wrapper {
+        background: #f7f8fe;
+        padding: 8px 16px;
+        display: flex;
+        align-items: center;
+        grid-area: 1 / 6 / 2 / 6;
+        font-size: 15px;
+        border-radius: 10px;
+        position: relative;
+        cursor: pointer;
+        width: 150px;
+        &:hover {
+          background-color: var(--dashboard-primary-hover-bg);
+        }
+        label {
+          cursor: inherit;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          font-weight: var(--weight-semibold);
+          color: var(--text-color);
+          .filter-icon {
+            position: absolute;
+            right: 10px;
+          }
+        }
+        
+
+        // Sort Dropdown
+        .dropdown-wrapper {
+          width: 190px;
+          height: auto;
+          background: #fff;
+          border-radius: 8px;
+          position: absolute;
+          top: 48px;
+          right: 0;
+          box-shadow:
+            rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
+            rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+          .arrow {
+            position: absolute;
+            top: -6px;
+            right: 20px;
+            width: 10px;
+            height: 10px;
+            background: #fff;
+            border-top: 1px solid #e5e5e5;
+            border-left: 1px solid #e5e5e5;
+            transform: rotate(45deg);
+          }
+          ul {
+            list-style: none;
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5em;
+            li {
+              padding: 8px;
+              border-radius: 8px;
+              &:hover {
+                background: var(--dashboard-primary-hover-bg);
+              }
+            }
+          }
+        }
+      }
+    }
+
+    // Customer Table
+    .custom-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      overflow: hidden;
+    }
+
+    .custom-table thead {
+      color: var(--dashboard-text-color-light);
+    }
+
+    .custom-table th,
+    .custom-table td {
+      padding: 25px 15px;
+      text-align: left;
+      font-weight: var(--weigth-regular);
+    }
+
+    .custom-table td:nth-child(7){
+      width: 10px;
+    }
+
+    .custom-table tbody tr {
+      border-bottom: 1px solid #dddddd;
+    }
+
+    // Table footer
+    .table-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      p {
+        color: var(--dashboard-text-color-light);
+        font-size: 14px;
+      }
+    }
+  }
+}

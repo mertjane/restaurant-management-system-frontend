@@ -1,0 +1,26 @@
+.dashboard-container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  height: 100%;
+  .sidebar-container {
+    grid-area: 1 / 1 / 6 / 2;
+    width: 306px;
+    height: 100%;
+    background-color: #fff;
+    padding: 14px;
+    box-shadow:
+      rgba(0, 0, 0, 0.1) 0px 20px 25px -5px,
+      rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+  }
+
+  .dashboard-main {
+    grid-area: 1 / 2 / 6 / 6;
+    background: #eef0f8;
+    padding: 2em;
+    height: auto;
+    overflow-y: scroll;
+  }
+}

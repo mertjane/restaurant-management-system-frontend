@@ -1,24 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { ROUTES } from "./lib/routes/routes";
+import Login from "./pages/login/Login";
+import "./App.scss";
+import ProtectedRoute from "./lib/routes/ProtectedRoute";
+import Dashboard from "./pages/dashboard/Dashboard";
+import Customers from "./pages/customers/Customers";
+import Bookings from "./pages/bookings/Bookings";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <Router>
+        <Routes>
+          <Route path={ROUTES.ROOT} element={<Login />} />
+          <Route path={ROUTES.LOGIN} element={<Login />} />
+
+          <Route element={<ProtectedRoute />}>
+            <Route path={ROUTES.DASHBOARD} element={<Dashboard />}>
+              <Route path="customers" element={<Customers />} />
+              <Route path="bookings" element={<Bookings />} />
+              {/* 
+              <Route path="menu" element={<MenuComponent />} /> */}
+            </Route>
+          </Route>
+        </Routes>
+      </Router>
     </div>
   );
 }

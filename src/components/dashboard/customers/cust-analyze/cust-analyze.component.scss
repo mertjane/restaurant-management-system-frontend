@@ -1,0 +1,50 @@
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-around;
+  padding: 10px;
+  margin: 0;
+  position: relative;
+  .section {
+    padding-inline: 10px;
+    box-sizing: content-box;
+    display: flex;
+    align-items: center;
+    .content-wrapper {
+      display: inline-flex;
+      flex-direction: column;
+      max-width: auto;
+      padding: 0 8px;
+      > span:first-of-type {
+        color: var(--dashboard-text-color-light);
+      }
+      strong {
+        font-size: xx-large;
+        align-self: center;
+      }
+
+      .report {
+        display: flex;
+        align-items: center;
+        .percentage.success {
+          font-size: 14px;
+          font-weight: var(--weight-semibold);
+          color: #00ac4f;
+          padding-right: 4px;
+        }
+
+        .percentage.fail {
+          font-size: 14px;
+          font-weight: var(--weight-semibold);
+          color: #D0004B;
+          padding-right: 4px;
+        }
+        span:nth-child(3) {
+          color: var(--text-color);
+          font-size: 14px;
+        }
+      }
+    }
+  }
+}

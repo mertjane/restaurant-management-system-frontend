@@ -1,0 +1,57 @@
+.forgot-container {
+  .forgot-form {
+    h1 {
+      text-align: center;
+    }
+    p {
+      text-align: center;
+      padding: 0 24px;
+    }
+
+    .error-message {
+      margin-top: 1em;
+      padding: 8px;
+      text-align: start;
+      background-color: #f8d7da;
+      border-left: 4px solid var(--error-color);
+      color: var(--error-color);
+    }
+    .form-group {
+      margin: 1em 0;
+      text-align: start;
+      input:focus + .focus-text {
+        opacity: 1;
+        transition: 0.4s;
+      }
+      .focus-text {
+        width: 100%;
+        text-decoration: none;
+        cursor: auto;
+        opacity: 0;
+        transition: 0.4s;
+      }
+    }
+    .button-group {
+      height: 50px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin: 1em 0;
+      button {
+        margin: 0;
+      }
+      .back-to-login {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 200px;
+
+        cursor: pointer;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}

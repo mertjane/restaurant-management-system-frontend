@@ -1,0 +1,121 @@
+.email-icon-wrapper {
+  margin: 0 auto;
+}
+
+.success-icon {
+  path {
+    fill: #369f28;
+  }
+}
+
+.error-icon {
+  path {
+    fill: var(--error-color);
+  }
+}
+.info-icon {
+  path {
+    fill: var(--info-color);
+  }
+}
+
+.warning-icon {
+  path {
+    stroke: var(--warning-color);
+  }
+}
+
+.close-icon {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  cursor: pointer;
+  path {
+    stroke: var(--icon-color);
+  }
+
+  &:hover {
+    path {
+      stroke: var(--icon-color-hover);
+    }
+  }
+}
+
+.menu-item {
+  &.active > li .right-chevron {
+    path {
+      fill: #ffff;
+    }
+  }
+
+  .right-chevron {
+    path {
+      fill: #9197b3;
+    }
+  }
+}
+
+.right-chevron {
+  path {
+    fill: #333;
+  }
+}
+.left-chevron {
+  path {
+    fill: #333;
+  }
+}
+
+.down-chevron {
+  path {
+    fill: #9197b3;
+  }
+}
+
+.toggle-sidebarIcon {
+  transition: 0.3s;
+  margin-right: 12px;
+  cursor: pointer;
+  &:hover {
+    fill: var(--dashboard-primary-bg);
+    transition: 0.3s;
+  }
+}
+
+.search-icon {
+  position: absolute;
+  left: 14px;
+  path {
+    fill: var(--icon-color);
+  }
+}
+
+.icon-wrap {
+  background: linear-gradient(201.18deg, #d3ffe7 3.14%, #effff6 86.04%);
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .cust-analz-icon {
+    path {
+      stroke: #00ac4f;
+    }
+  }
+}
+
+.icon-wrap {
+  background: linear-gradient(201.18deg, #d3ffe7 3.14%, #effff6 86.04%);
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .new-customer-icon {
+    path {
+      stroke: #00ac4f;
+    }
+  }
+}
