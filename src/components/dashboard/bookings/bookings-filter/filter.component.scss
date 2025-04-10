@@ -1,0 +1,92 @@
+.overlay {
+  background: rgba(0, 0, 0, 0.6);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1003;
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.3s ease,
+    visibility 0.3s ease;
+
+  &.active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .filter-sidebar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 400px;
+    height: 100%;
+    background: white;
+    box-shadow: -4px 0 6px rgba(0, 0, 0, 0.1);
+    z-index: 1005;
+    padding: 20px;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    overflow-y: auto;
+    &.active {
+      transform: translateX(0);
+    }
+
+    .filter-header {
+      color: var(--text-color);
+      padding: 8px;
+      border-bottom: 1px solid #e5e5e5;
+    }
+
+    .filter-body {
+      padding: 14px 0;
+      margin-top: 3em;
+      display: flex;
+      flex-direction: column;
+      gap: 2em;
+      .control-box {
+        // when we click the label below, control box will be expand to down smoothly.
+        min-height: 20px;
+        border-bottom: 1px solid #e5e5e5;
+        padding: 8px 0;
+        label {
+          cursor: pointer;
+          padding: 12px 6px;
+          border-radius: 8px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          font-weight: var(--weight-semibold);
+          color: var(--text-color);
+          &:hover {
+            background-color: var(--dashboard-primary-hover-bg);
+          }
+          .down-chevron {
+            path {
+              fill: var(--text-color);
+            }
+          }
+        }
+      }
+    }
+
+    .filter-footer{
+      padding: 22px 0;
+      height: 100px;
+      margin-top: 5em;
+      display: flex;
+      align-items: flex-end;
+      .submitControl{
+        cursor: pointer;
+        padding: 12px 42px;
+        background: var(--dashboard-primary-bg);
+        font-weight: var(--weight-semibold);
+        &:hover{
+          background-color: #5026ea;
+        }
+      }
+    }
+  }
+}

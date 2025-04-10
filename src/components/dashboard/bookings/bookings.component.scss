@@ -149,6 +149,36 @@
       width: 10px;
     }
 
+    .status-pending {
+      display: inline-block;
+      width: 100px;
+      color: #e6a800;
+      background-color: #fff5cc;
+      font-weight: 500;
+      padding: 4px 8px;
+      border-radius: 6px;
+    }
+    
+    .status-confirmed {
+      color: #1a7f37;
+      background-color: #d1fae5;
+      font-weight: 500;
+      padding: 4px 8px;
+      border-radius: 6px;
+      display: inline-block;
+      width: 100px;
+    }
+    
+    .status-cancelled {
+      color: #b91c1c;
+      background-color: #fee2e2;
+      font-weight: 500;
+      padding: 4px 8px;
+      border-radius: 6px;
+      display: inline-block;
+      width: 100px;
+    }
+
     .custom-table tbody tr {
       border-bottom: 1px solid #dddddd;
     }

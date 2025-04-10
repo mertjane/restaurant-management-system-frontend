@@ -1,7 +1,7 @@
 import "./bookings.component.scss";
 import BookingsAnalyze from "./bookings-analyze/BookingsAnalyze";
 import BookingsSearch from "./bookings-search/BookingsSearch";
-import BookingSort from "./bookings-sort/BookingSort";
+import BookingSort from "./bookings-control/BookingControl";
 import { useBookingsQuery } from "../../../lib/hooks/useBookingsQuery";
 import { useEffect, useState } from "react";
 import Pagination from "../pagination/Pagination";
@@ -29,6 +29,12 @@ const BookingsTable = () => {
     }, 500); // debounce delay
     return () => clearTimeout(delayDebounceFn);
   }, [searchInput]);
+
+  const statusClassMap: Record<string, string> = {
+    Pending: "status-pending",
+    Confirmed: "status-confirmed",
+    Cancelled: "status-cancelled",
+  };
 
   return (
     <div className="bookings-container">
@@ -72,7 +78,11 @@ const BookingsTable = () => {
                 <td>{booking.date}</td>
                 <td>{booking.time}</td>
                 <td>{booking.numPeople}</td>
-                <td>{booking.status}</td>
+                <td>
+                  <span className={statusClassMap[booking.status] || ""}>
+                    {booking.status}
+                  </span>
+                </td>
               </tr>
             ))}
           </tbody>
