@@ -9,7 +9,7 @@ import { getSortParams } from "../utils/customer.utils";
 
 export const useCustomers = (page: number, size: number, searchTerm?: string) => {
   const userId = useSelector((state: RootState) => state.auth.user?.id);
-  const sort = useSelector((state: RootState) => state.sort.value);
+  const sort = useSelector((state: RootState) => state.sort.customers);
   const { data: restaurant } = useRestaurant();
   const restaurantId = restaurant?.[0]?.id;
 

@@ -1,0 +1,74 @@
+.summary-wrapper {
+  height: 150px;
+  background-color: #fff;
+  border-radius: 40px;
+  padding: 10px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  box-shadow:
+    rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
+    rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+
+  .active-orders-container,
+  .pending-orders-container,
+  .top-item-container,
+  .total-container {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    .description {
+      text-align: center;
+      h4 {
+        color: var(--dashboard-text-color-light);
+        font-weight: var(--weight-regular);
+      }
+      strong {
+        font-size: xx-large;
+      }
+    }
+  }
+  .top-item-container .description {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    margin-bottom: 18px;
+    margin-left: 10px;
+    strong {
+      font-size: x-large;
+      line-height: 1;
+      text-align: center;
+    }
+  }
+  .icon-wrapper {
+    background: linear-gradient(201.18deg, #d3ffe7 3.14%, #effff6 86.04%);
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .order-icon,
+    .pending-icon {
+      color: #00ac4f;
+      stroke-width: 10px;
+    }
+    .medal-icon,
+    .total-icon {
+      color: #00ac4f;
+    }
+  }
+}
+
+// Order Item
+.orders-wrapper {
+  min-height: 550px;
+  max-width: 400px;
+  background-color: #fff;
+  border-radius: 40px;
+  padding: 32px;
+  box-shadow:
+    rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
+    rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+}

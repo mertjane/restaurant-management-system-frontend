@@ -136,6 +136,7 @@
       padding: 8px;
       border-radius: 6px;
       cursor: pointer;
+      
       .radio-option {
         display: flex;
         align-items: center;
@@ -143,10 +144,8 @@
         font-weight: 500;
         position: relative;
         font-size: 14px;
-
-        /* Style for the label when hovered */
-        &:hover {
-          opacity: 0.8;
+        &:hover{
+          background: white !important;
         }
 
         input[type="radio"] {

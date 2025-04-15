@@ -3,6 +3,7 @@ import { authSlice } from "./slices/authSlice";
 import { toastSlice } from "./slices/toastSlice";
 import { sortSlice } from "./slices/sortSlice";
 import { filterSlice } from "./slices/filterSlice";
+import { modalSlice } from "./slices/modalSlice";
 
 export const store = configureStore({
   reducer: {
@@ -10,6 +11,7 @@ export const store = configureStore({
     toast: toastSlice.reducer,
     sort: sortSlice.reducer,
     filter: filterSlice.reducer,
+    modal: modalSlice.reducer,
   },
 });
 

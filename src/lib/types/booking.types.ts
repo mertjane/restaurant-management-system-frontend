@@ -32,5 +32,28 @@ export interface UpdateBookingPayload {
     num_people?: number;
     status?: string;
   };
+}
 
+export type NewBookings = Omit<Bookings, "id" | "customer"> & {
+  customer: Omit<NonNullable<Bookings["customer"]>, "id">;
+  num_people: number;  
+};
+
+
+export interface BookingAnalyticsData {
+  restaurantId?: number;
+  date: string;
+  totalBookings: number;
+  totalCust: number;
+  cancelledCount: number;
+  confirmedCount: number;
+  pendingCount: number;
+  peakHour: string;
+}
+
+
+export interface GetBookingAnalyticsParams {
+  restaurantId: number;
+  startDate: string; // ISO format
+  endDate: string;   // ISO format
 }

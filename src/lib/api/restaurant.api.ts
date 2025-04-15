@@ -1,7 +1,8 @@
 import axios from "axios";
 import { RestaurantResponse } from "../types/restaurant.types";
+import { BASE_URL } from "./_instances";
 
-const BASE_URL = "http://localhost:8080"
+
 
 /**
  * 

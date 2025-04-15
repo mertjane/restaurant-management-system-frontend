@@ -1,5 +1,7 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import "./sidebar.component.scss";
+import { GoChevronRight } from "react-icons/go";
+
 import {
   DownChevronIcon,
   ProfileIcon,
@@ -11,6 +13,7 @@ import { Link } from "react-router-dom";
 
 const Sidebar = () => {
   const [activeItem, setActiveItem] = useState<string>("dashboard");
+
   const { data, isLoading, error } = useRestaurant();
 
   // Load the active item from localStorage on mount
@@ -60,10 +63,17 @@ const Sidebar = () => {
               <RightChevronIcon />
             </li>
           </Link>
-          <li className="menu-item">
-            Orders
-            <RightChevronIcon />
-          </li>
+          <Link
+            className={`menu-item ${activeItem === "orders" ? "active" : ""}`}
+            onClick={() => handleItemClick("orders")}
+            to="/dashboard/orders"
+          >
+            <li>
+              Orders
+              <RightChevronIcon />
+            </li>
+          </Link>
+
           <li className="menu-item">
             Menu
             <RightChevronIcon />

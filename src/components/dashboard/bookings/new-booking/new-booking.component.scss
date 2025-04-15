@@ -1,0 +1,117 @@
+.overlay {
+  background: rgba(0, 0, 0, 0.6);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition:
+    opacity 0.3s,
+    visibility 0.3s;
+  &.active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .modal-container {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    width: 600px;
+    max-width: 95%;
+    position: relative;
+    transform: translateY(-5%);
+    position: relative;
+    z-index: 1001;
+    scale: 0;
+    transition: scale 0.5s;
+
+    &.visible {
+      scale: 1;
+    }
+    h2 {
+      padding: 6px 0;
+      border-bottom: 1px solid #ccc;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      .close-ico {
+        cursor: pointer;
+        padding: 4px;
+        border-radius: 50%;
+        transition: 0.3s;
+        &:hover {
+          background-color: var(--dashboard-primary-hover-bg);
+        }
+      }
+    }
+
+    .modal-body {
+      padding-top: 3em;
+      .row {
+        display: flex;
+        gap: 0.5em;
+        .control-box {
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+          position: relative;
+          label {
+            margin-bottom: 4px;
+          }
+          input {
+            outline: none;
+          }
+
+          .c-ico,
+          .t-ico {
+            position: absolute;
+            right: 12px;
+            top: 40px;
+            color: var(--icon-color);
+            stroke-width: 0.5;
+            pointer-events: none;
+          }
+        }
+      }
+    }
+
+    .status-control-box {
+      .selection-box {
+        display: flex;
+        align-items: flex-start;
+        gap: 1em;
+
+        padding: 24px 0;
+        div {
+          padding: 6px 24px;
+          border: 1px solid #ccc;
+          border-radius: 24px;
+          cursor: pointer;
+          transition: 0.3s;
+          &:hover {
+            background: var(--dashboard-primary-hover-bg);
+          }
+        }
+      }
+    }
+    .modal-footer {
+      padding: 16px 0;
+      button {
+        padding: 14px 48px;
+        cursor: pointer;
+        background: var(--dashboard-primary-bg);
+        transition: 0.3s;
+        &:hover {
+          background: #4525b9;
+        }
+      }
+    }
+  }
+}

@@ -1,10 +1,22 @@
-import React, { useState } from "react";
 import { CiClock2 } from "react-icons/ci";
 import "./dropdown.component.scss";
+import { AppDispatch, RootState } from "../../../../lib/redux/store";
+import { useDispatch, useSelector } from "react-redux";
+import { setBookingFilters } from "../../../../lib/redux/slices/filterSlice";
 
 const TimeRange = () => {
-  const [startTime, setStartTime] = useState<string>("");
-  const [endTime, setEndTime] = useState<string>("");
+  const dispatch = useDispatch<AppDispatch>();
+  const { startTime, endTime } = useSelector(
+    (state: RootState) => state.filter.bookings
+  );
+
+  const handleStartTimeChange = (e: any) => {
+    dispatch(setBookingFilters({ startTime: e.target.value, endTime }));
+  };
+
+  const handleEndTimeChange = (e: any) => {
+    dispatch(setBookingFilters({ startTime, endTime: e.target.value }));
+  };
 
   return (
     <div className="dropdown-content">
@@ -13,9 +25,9 @@ const TimeRange = () => {
         <input
           type="time"
           name="startTime"
-          value={startTime}
+          value={startTime || ""}
           id="startTime"
-          onChange={(e) => setStartTime(e.target.value)}
+          onChange={handleStartTimeChange}
         />
         <CiClock2 className="time-icon" size={25} />
       </div>
@@ -24,9 +36,9 @@ const TimeRange = () => {
         <input
           type="time"
           name="endTime"
-          value={endTime}
+          value={endTime || ""}
           id="endTime"
-          onChange={(e) => setEndTime(e.target.value)}
+          onChange={handleEndTimeChange}
         />
         <CiClock2 className="time-icon" size={25} />
       </div>

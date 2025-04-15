@@ -1,9 +1,115 @@
-.wrapper {
+.section {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  justify-content: space-around;
+  gap: 1em;
   padding: 10px;
   margin: 0;
   position: relative;
+  width: 100%;
+  .total-bookings {
+    display: flex;
+    .icon-wrapper {
+      background: linear-gradient(201.18deg, #d3ffe7 3.14%, #effff6 86.04%);
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .book-icon {
+        color: #00ac4f;
+        stroke-width: 10px;
+      }
+    }
+
+    .content-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 10px 6px;
+      span {
+        color: var(--dashboard-text-color-light);
+      }
+      strong {
+        font-size: xx-large;
+      }
+    }
+  }
+
+  .avarage-cust {
+    display: flex;
+    .content-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 10px 6px;
+      span {
+        color: var(--dashboard-text-color-light);
+        text-align: center;
+      }
+      strong {
+        font-size: xx-large;
+      }
+    }
+  }
+
+  .peak-hours {
+    display: flex;
+    .icon-wrapper {
+      background: linear-gradient(201.18deg, #d3ffe7 3.14%, #effff6 86.04%);
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .peak-icon {
+        color: #00ac4f;
+      }
+    }
+
+    .content-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 10px 12px;
+      span {
+        color: var(--dashboard-text-color-light);
+      }
+      strong {
+        font-size: xx-large;
+      }
+    }
+  }
+
+  .total-pendings {
+    display: flex;
+    .icon-wrapper {
+      background: linear-gradient(201.18deg, #d3ffe7 3.14%, #effff6 86.04%);
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .pending-icon {
+        color: #00ac4f;
+      }
+    }
+
+    .content-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 10px 4px;
+      span {
+        color: var(--dashboard-text-color-light);
+      }
+      strong {
+        font-size: xx-large;
+      }
+    }
+  }
 }

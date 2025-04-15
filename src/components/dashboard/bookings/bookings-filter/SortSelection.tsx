@@ -1,68 +1,48 @@
-import React, { useState } from "react";
 import "./dropdown.component.scss";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "../../../../lib/redux/store";
+import {
+  setBookingSort,
+  SortOption,
+} from "../../../../lib/redux/slices/sortSlice";
 
-const SortSelection = () => {
-  const [selectedSort, setSelectedSort] = useState<string>("");
+interface SortProps {
+  type: "customers" | "bookings";
+}
 
-  const handleSortChange = (sort: string) => {
-    setSelectedSort(sort);
+const SortSelection = ({ type }: SortProps) => {
+  const dispatch = useDispatch<AppDispatch>();
+
+  const sortOptions: { label: string; value: SortOption }[] = [
+    { label: "Newest", value: "newest" },
+    { label: "Oldest", value: "oldest" },
+    { label: "Today", value: "today_to_future" },
+  ];
+
+  const sort = useSelector((state: RootState) => state.sort.bookings);
+
+  const handleSortChange = (sortValue: SortOption) => {
+    dispatch(setBookingSort(sortValue));
   };
 
   return (
     <div className="dropdown-content">
       <ul>
-        <li>
-          <label className="radio-option">
-            <input
-              type="radio"
-              name="sort"
-              value="Name A-Z"
-              checked={selectedSort === "Name A-Z"}
-              onChange={() => handleSortChange("Name A-Z")}
-            />
-            <span className="custom-radio"></span>
-            <span>Name A-Z</span>
-          </label>
-        </li>
-        <li>
-          <label className="radio-option">
-            <input
-              type="radio"
-              name="sort"
-              value="Name Z-A"
-              checked={selectedSort === "Name Z-A"}
-              onChange={() => handleSortChange("Name Z-A")}
-            />
-            <span className="custom-radio"></span>
-            <span>Name Z-A</span>
-          </label>
-        </li>
-        <li>
-          <label className="radio-option">
-            <input
-              type="radio"
-              name="sort"
-              value="Newest"
-              checked={selectedSort === "Newest"}
-              onChange={() => handleSortChange("Newest")}
-            />
-            <span className="custom-radio"></span>
-            <span>Newest</span>
-          </label>
-        </li>
-        <li>
-          <label className="radio-option">
-            <input
-              type="radio"
-              name="sort"
-              value="Oldest"
-              checked={selectedSort === "Oldest"}
-              onChange={() => handleSortChange("Oldest")}
-            />
-            <span className="custom-radio"></span>
-            <span>Oldest</span>
-          </label>
-        </li>
+        {sortOptions.map((opt) => (
+          <li key={opt.value}>
+            <label className="radio-option">
+              <input
+                type="radio"
+                name={`sort-${type}`}
+                value={opt.value}
+                checked={sort === opt.value}
+                onChange={() => handleSortChange(opt.value)}
+              />
+              <span className="custom-radio"></span>
+              <span>{opt.label}</span>
+            </label>
+          </li>
+        ))}
       </ul>
     </div>
   );

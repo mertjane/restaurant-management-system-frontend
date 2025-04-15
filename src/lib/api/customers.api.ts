@@ -1,7 +1,8 @@
 
 import axios from "axios";
-import { CustomerResponse } from "../types/customers.types";
-const BASE_URL = "http://localhost:8080";
+import { CustomerAnalyticsData, CustomerResponse, GetCustomerAnalyticsParams } from "../types/customers.types";
+import { BASE_URL } from "./_instances";
+
 
 
 /**
@@ -106,3 +107,38 @@ export const sortCustomers = async ({
   );
   return response.data;
 };
+
+
+export const postCustomerAnalytics = async (
+  params: GetCustomerAnalyticsParams
+): Promise<CustomerAnalyticsData> => {
+  try {
+    const { restaurantId, currentMonth } = params;
+    const response = await axios.post<CustomerAnalyticsData>(
+      `${BASE_URL}/analytics-customers/calculate?restaurantId=${restaurantId}&currentMonth=${currentMonth}`
+    );
+    return response.data;
+  } catch (error: any) {
+    console.error('Error generating customer analytics:', error);
+    throw error;
+  }
+};
+
+
+export const getCustomerAnalytics = async (
+  params: GetCustomerAnalyticsParams
+): Promise<CustomerAnalyticsData> => {
+  try {
+    const { restaurantId, currentMonth } = params;
+    const response = await axios.get<CustomerAnalyticsData>(
+      `${BASE_URL}/analytics-customers/get?restaurantId=${restaurantId}&currentMonth=${currentMonth}`
+    );
+    return response.data;
+  } catch (error: any) {
+    console.error('Error fetching customer analytics:', error);
+    throw error;
+  }
+};
+
+
+

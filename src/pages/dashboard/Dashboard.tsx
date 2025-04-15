@@ -1,6 +1,7 @@
 import { Outlet } from "react-router-dom";
 import Sidebar from "../../components/dashboard/sidebar/Sidebar";
 import "./dashboard.component.scss";
+import { SuccessToaster } from "../../components/toaster/Toaster";
 
 const Dashboard = () => {
   return (
@@ -11,6 +12,7 @@ const Dashboard = () => {
       <main className="dashboard-main">
         <Outlet />
       </main>
+      <SuccessToaster />
     </div>
   );
 };

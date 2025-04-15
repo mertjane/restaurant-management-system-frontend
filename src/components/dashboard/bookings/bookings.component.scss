@@ -34,6 +34,18 @@
       grid-row-gap: 0px;
       h2 {
         grid-area: 1 / 1 / 2 / 2;
+        display: flex;
+        align-items: center;
+        gap: 1.5em;
+        width: max-content;
+        .add-btn {
+          border-radius: 8px;
+          cursor: pointer;
+          color: #333;
+          &:hover {
+            background-color: var(--dashboard-primary-hover-bg);
+          }
+        }
       }
       .navigation {
         display: flex;
@@ -83,7 +95,6 @@
             right: 10px;
           }
         }
-        
 
         // Sort Dropdown
         .dropdown-wrapper {
@@ -140,13 +151,120 @@
 
     .custom-table th,
     .custom-table td {
-      padding: 25px 15px;
+      padding: 15px;
       text-align: left;
-      font-weight: var(--weigth-regular);
+      font-weight: var(--weight-regular);
+      font-size: 15px;
+      position: relative;
     }
 
-    .custom-table td:nth-child(7){
-      width: 10px;
+    .custom-table td:nth-child(1) {
+      min-width: 200px;
+      font-size: 15px;
+    }
+    .custom-table td:nth-child(2) {
+      min-width: 120px;
+      font-size: 15px;
+    }
+
+    .custom-table td:nth-child(4) {
+      input {
+        margin: 0;
+        width: 100px;
+        padding: 4px;
+        display: flex;
+        outline: none;
+        border: none;
+        font-size: 15px;
+        transition:
+          border-color 0.3s ease,
+          box-shadow 0.3s ease;
+        &:focus {
+          border: 1px solid var(--dashboard-primary-bg);
+          box-shadow: inset 0 0 0 1px var(--dashboard-primary-bg);
+          transition: 0.3s;
+        }
+      }
+    }
+
+    .custom-table td:nth-child(5) {
+      input {
+        margin: 0;
+        width: 85px;
+        padding: 4px;
+        display: flex;
+        outline: none;
+        border: none;
+        font-size: 15px;
+        transition:
+          border-color 0.3s ease,
+          box-shadow 0.3s ease;
+        &:focus {
+          border: 1px solid var(--dashboard-primary-bg);
+          box-shadow: inset 0 0 0 1px var(--dashboard-primary-bg);
+          transition: 0.3s;
+        }
+      }
+    }
+
+    .custom-table td:nth-child(6) {
+      input {
+        margin: 0;
+        width: 30px;
+        display: flex;
+        padding: 4px;
+        outline: none;
+        border: none;
+        font-size: 15px;
+        transition:
+          border-color 0.3s ease,
+          box-shadow 0.3s ease;
+        &:focus {
+          border: 1px solid var(--dashboard-primary-bg);
+          box-shadow: inset 0 0 0 1px var(--dashboard-primary-bg);
+          transition: 0.3s;
+        }
+      }
+    }
+
+    .custom-table td:nth-child(7) {
+      input {
+        margin: 0;
+        width: 95px;
+        display: flex;
+        padding: 4px;
+        outline: none;
+        border: none;
+        font-size: 15px;
+        transition:
+          border-color 0.3s ease,
+          box-shadow 0.3s ease;
+        &:focus {
+          border: 1px solid var(--dashboard-primary-bg);
+          box-shadow: inset 0 0 0 1px var(--dashboard-primary-bg);
+          transition: 0.3s;
+        }
+      }
+    }
+
+    .custom-table td:nth-child(8) button {
+      background-color: var(--dashboard-primary-bg);
+      font-weight: var(--weight-regular);
+      padding: 6px;
+      margin: 0;
+      position: absolute;
+      right: 0px;
+      bottom: 16px;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      box-shadow:
+        rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+        rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+        transition: 0.3s;
+      &:hover{
+        background-color: #512ade;
+      }
     }
 
     .status-pending {
@@ -157,8 +275,11 @@
       font-weight: 500;
       padding: 4px 8px;
       border-radius: 6px;
+      &:hover {
+        background-color: #fff5cc !important;
+      }
     }
-    
+
     .status-confirmed {
       color: #1a7f37;
       background-color: #d1fae5;
@@ -166,9 +287,12 @@
       padding: 4px 8px;
       border-radius: 6px;
       display: inline-block;
-      width: 100px;
+      width: max-content;
+      &:hover {
+        background-color: #d1fae5 !important;
+      }
     }
-    
+
     .status-cancelled {
       color: #b91c1c;
       background-color: #fee2e2;
@@ -177,6 +301,9 @@
       border-radius: 6px;
       display: inline-block;
       width: 100px;
+      &:hover {
+        background-color: #fee2e2 !important;
+      }
     }
 
     .custom-table tbody tr {

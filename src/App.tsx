@@ -7,6 +7,7 @@ import Dashboard from "./pages/dashboard/Dashboard";
 import Customers from "./pages/customers/Customers";
 import Bookings from "./pages/bookings/Bookings";
 import PublicRoute from "./lib/routes/PublicRoute";
+import Orders from "./pages/orders/Orders";
 
 function App() {
   return (
@@ -21,8 +22,9 @@ function App() {
 
           <Route element={<ProtectedRoute />}>
             <Route path={ROUTES.DASHBOARD} element={<Dashboard />}>
-              <Route path="customers" element={<Customers />} />
-              <Route path="bookings" element={<Bookings />} />
+              <Route path={ROUTES.CUSTOMERS} element={<Customers />} />
+              <Route path={ROUTES.BOOKINGS} element={<Bookings />} />
+              <Route path={ROUTES.ORDERS} element={<Orders />} />
               {/* 
               <Route path="menu" element={<MenuComponent />} /> */}
             </Route>

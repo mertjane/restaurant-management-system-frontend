@@ -1,12 +1,17 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "../customers.component.scss";
 import { DownChevronIcon } from "../../../../lib/icons/Icons";
-import { SortOption, setSort } from "../../../../lib/redux/slices/sortSlice";
+import {
+  SortOption,
+  setCustomerSort,
+} from "../../../../lib/redux/slices/sortSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../../../lib/redux/store";
 
+
 const Sort = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const dispatch = useDispatch<AppDispatch>();
   const sortOptions: { label: string; value: SortOption }[] = [
     { label: "Name A-Z", value: "name_asc" },
     { label: "Name Z-A", value: "name_desc" },
@@ -14,11 +19,10 @@ const Sort = () => {
     { label: "Oldest", value: "oldest" },
   ];
 
-  const sort = useSelector((state: RootState) => state.sort.value);
-  const dispatch = useDispatch<AppDispatch>();
+  const sort = useSelector((state: RootState) => state.sort.customers);
 
   const handleSortChange = (option: SortOption) => {
-    dispatch(setSort(option));
+    dispatch(setCustomerSort(option));
     setIsOpen(false);
   };
 

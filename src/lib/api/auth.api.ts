@@ -11,7 +11,8 @@
 
 import axios from "axios";
 import { ForgotPwdRequest, ForgotPwdResponse, LoginResponse, PasswordResetRequest, PasswordResetResponse } from "../types/auth.types";
-const BASE_URL = "http://localhost:8080";
+import { BASE_URL } from "./_instances";
+
 
 /**
  * Function to check if the user is authenticated

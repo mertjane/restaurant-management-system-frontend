@@ -27,6 +27,7 @@
       .report {
         display: flex;
         align-items: center;
+        
         .percentage.success {
           font-size: 14px;
           font-weight: var(--weight-semibold);
@@ -39,6 +40,12 @@
           font-weight: var(--weight-semibold);
           color: #D0004B;
           padding-right: 4px;
+        }
+        
+        span:nth-child(2) {
+          text-align: center;
+          color: var(--text-color);
+          font-size: 14px;
         }
         span:nth-child(3) {
           color: var(--text-color);

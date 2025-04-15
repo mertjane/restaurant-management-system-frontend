@@ -1,16 +1,38 @@
 import React from "react";
-import "../cust-analyze.component.scss"
-import { CustomerAnalzIcon, UpIcon } from "../../../../../lib/icons/Icons";
+import "../cust-analyze.component.scss";
+import {
+  CustomerAnalzIcon,
+  DownIcon,
+  UpIcon,
+} from "../../../../../lib/icons/Icons";
+import { CustomerAnalyticsData } from "../../../../../lib/types/customers.types";
 
-const TotalCustAnalyze = () => {
+interface Props {
+  data?: CustomerAnalyticsData;
+}
+
+const TotalCustAnalyze: React.FC<Props> = ({ data }) => {
+  if (!data) {
+    return <p>Invalid or incomplete data</p>; // Fallback for invalid data
+  }
+
+  const change = data.newCustsChange;
+  const isPositive = change >= 0;
+  const ChangeIcon = isPositive ? UpIcon : DownIcon;
+
   return (
     <div className="section">
       <CustomerAnalzIcon />
+
       <div className="content-wrapper">
         <span>Total Customers</span>
-        <strong>28</strong>
+        <strong>{data?.totalCusts}</strong> {/* Display total customers */}
         <div className="report">
-          <UpIcon /> <span className="percentage success">15%</span>
+          <ChangeIcon />
+          <span className={`percentage ${isPositive ? "success" : "fail"}`}>
+            {data?.totalCustsChange?.toFixed()}%
+          </span>{" "}
+          {/* Display total customers change */}
           <span>this month</span>
         </div>
       </div>

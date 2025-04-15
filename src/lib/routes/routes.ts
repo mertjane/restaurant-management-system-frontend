@@ -3,7 +3,8 @@ export const ROUTES = {
   ROOT: "/",
   DASHBOARD: "/dashboard",
   CUSTOMERS: "/dashboard/customers",
-  /* BOOKINGS: "/dashboard/bookings", */
+  BOOKINGS: "/dashboard/bookings",
+  ORDERS: "/dashboard/orders",
   /* 
   MENU: "/dashboard/menu", */
 } as const;

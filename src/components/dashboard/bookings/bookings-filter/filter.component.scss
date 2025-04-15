@@ -72,20 +72,45 @@
       }
     }
 
-    .filter-footer{
+    .filter-footer {
       padding: 22px 0;
       height: 100px;
       margin-top: 5em;
       display: flex;
       align-items: flex-end;
-      .submitControl{
+      .submitControl {
         cursor: pointer;
         padding: 12px 42px;
         background: var(--dashboard-primary-bg);
         font-weight: var(--weight-semibold);
-        &:hover{
+        &:hover {
           background-color: #5026ea;
         }
+      }
+    }
+  }
+}
+
+.storage-box {
+  ul {
+    list-style: none;
+    padding: 8px 12px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    max-width: max-content;
+    border-radius: 32px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    .close-ico{
+      cursor: pointer;
+      width: 19px;
+      height: 19px;
+      fill: var(--text-color);
+      stroke-width: 3;
+      &:hover{
+        color: #ccc;
+        transition: 0.3s;
       }
     }
   }
